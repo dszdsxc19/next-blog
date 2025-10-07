@@ -19,7 +19,7 @@ A: Free and open application performance monitoring
 ### APM Server
 APM Server 是 Elastic 家的前端性能监控方案的关键组件。它接收 Elastic APM agents 上报的数据，写入 Elasticsearch 进行存储，最终在 Kibana 中完成可视化与分析。
 
-![架构图](/static/images/image.png)
+![架构图](/static/images/post/image.png)
 
 ## 安装前提
 
@@ -62,7 +62,7 @@ ELK_VERSION=8.11.0
 ```
 
 **除此之外，ELK 的初始化配置也很关键。** 按上述最小配置启动后（`docker-compose up`），访问 `localhost:5601` 通常会看到如下界面：
-![Alt text](</static/images/CleanShot 2023-11-11 at 14.04.45.png>)
+![Alt text](</static/images/post/CleanShot 2023-11-11 at 14.04.45.png>)
 
 点击`Where do I find this?`，可以看到：
 > The enrollment token is automatically generated when you start Elasticsearch for the first time. You might need to scroll back a bit in the terminal to view it.
@@ -72,13 +72,13 @@ ELK_VERSION=8.11.0
 > `bin/elasticsearch-create-enrollment-token --scope kibana`
 
 所以进入`Elasticsearch`容器的`/usr/share/elasticsearch`目录，执行上述命令即可。然后复制生成的token，输入后进入下一步，`Verification required`:
-![Alt text](</static/images/CleanShot 2023-11-11 at 14.09.56.png>)
+![Alt text](</static/images/post/CleanShot 2023-11-11 at 14.09.56.png>)
 
 > Copy the code from the Kibana server or run  `bin/kibana-verification-code` to retrieve it.
 
 所以按照指示，进入`kibana`容器的`/usr/share/kibana`目录，执行上述命令，填入生成的验证码即可。若上述步骤没有问题，接下来就会来到登录界面：
 
-![Alt text](</static/images/CleanShot 2023-11-11 at 14.11.54.png>)
+![Alt text](</static/images/post/CleanShot 2023-11-11 at 14.11.54.png>)
 
 ### 内建用户（Built-in users）
 
@@ -113,7 +113,7 @@ ELK_VERSION=8.11.0
 
 也就是说，自 v8 起，不能使用默认密码的超级用户 `elastic` 直接登录 Kibana。若需使用 `elastic` 登录，需要先重置或修改该用户密码。
 
-![Alt text](</static/images/CleanShot 2023-11-11 at 14.39.51.png>)
+![Alt text](</static/images/post/CleanShot 2023-11-11 at 14.39.51.png>)
 
 #### 二
 Elasticsearch 自 6.8 起向免费用户开放 X-Pack 的安全功能，并默认开启。若关闭，许多能力将不可用（例如 Kibana 无法连接 Elasticsearch）。请勿为图省事而将 `xpack.security.enabled=false`，生产环境务必开启安全特性。
@@ -229,7 +229,7 @@ Option             Description
 -s, --silent       Show minimal output                                      
 -v, --verbose      Show verbose output 
 ```
-比如我刚创建的 `esadmin` 用户现在还不能登录 Kibana：![Alt text](/static/images/CleanShot 2023-11-11 at 15.18.46.png)
+比如我刚创建的 `esadmin` 用户现在还不能登录 Kibana：![Alt text](/static/images/post/CleanShot 2023-11-11 at 15.18.46.png)
 
 添加下列权限后就可以成功登录了。（具体权限查看[Built-in roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/built-in-roles.html)）
 
@@ -333,7 +333,7 @@ https://www.elastic.co/guide/en/apm/agent/rum-js/current/angular-integration.htm
 
 https://www.elastic.co/guide/en/elasticsearch/reference/8.1/service-accounts.html
 
-![Alt text](/static/images/稿定设计导出-20231111-145715.jpg)
+![Alt text](/static/images/post/稿定设计导出-20231111-145715.jpg)
 
 最后的`apm-server.yml`:
 ```yml
