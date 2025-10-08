@@ -86,8 +86,6 @@ Web中登录认证的核心就是**凭证机制**。用户登录成功后返回�
 
 **Spring Security对Web系统的支持就是基于这一个个过滤器组成的过滤器链。**
 
-![alt text](/static/images/blog/multi-securityfilterchain.png)
-
 > Spring Security的核心逻辑全在这一套过滤器中，过滤器（比如认证过滤器，授权过滤器等等）里会调用各种组件（密码Encoder, SecurityContext等等）完成功能，掌握了这些过滤器和组件你就掌握了Spring Security。
 
 ## SecurityContextHolder

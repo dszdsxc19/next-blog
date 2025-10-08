@@ -474,7 +474,7 @@ public Object hello(String name, String password) {
 
 
 ## DispatcherServlet
-![alt text](/static/images/blog/7b8817122aa542e7b8e997ef5120688c.png)
+DispatcherServlet 是典型的前端控制器，负责把请求分发给合适的 HandlerMapping、HandlerAdapter 等组件。
 
 #TODO
 还不是很理解，有空需要再看一下[DispatcherServlet详解](https://blog.csdn.net/m0_45406092/article/details/115423861)
@@ -499,9 +499,7 @@ dependencies {
 需要的依赖，一个是JPA，还有一个是给JDBC提供的具体数据库厂商的驱动（实现了JDBC规范）。
 
 ### 配置和连接JDBC
-数据库的URL可以在类似DBeaver这样的数据库管理软件的连接界面复制，比如：
-
-![alt text](/static/images/blog/CleanShot 2024-03-14 at 01.25.53.png)
+数据库的 URL 可以在类似 DBeaver 这样的数据库管理软件的连接界面直接复制，无需手动拼接。
 
 下面的配置文件是给JDBC使用的。
 ```yaml
@@ -662,7 +660,7 @@ JPA 支持 正向工程。
 ## Repository
 
 ### Interface Hierarchy
-![alt text](/static/images/blog/9c4e4c00c7a64047b819874635b4f7f9~tplv-k3u1fbpfcp-zoom-1.image.png)
+Spring Data JPA 的 Repository 接口是分层设计的，从 `CrudRepository`、`PagingAndSortingRepository` 到 `JpaRepository` 逐级扩展能力。
 
 
 ### 使用
@@ -809,9 +807,7 @@ public class Student {
 `@JsonManagedReference`声明在`@OneToMany`的一方，`@JsonBackReference`声明在`@ManyToOne`的一方。
 
 # DTO
-DTO stands for data transfer object.
-
-![alt text](/static/images/blog/CleanShot 2024-03-16 at 15.27.26.png)
+DTO stands for data transfer object，用于在不同层之间传递经过筛选或组合的数据。
 
 `@Entity`中声明的实体类对应的是数据库中的表结构，但是想象一下：
 
@@ -1031,5 +1027,3 @@ public class StudentController {
 
 # End
 视频从7:34开始就是另外一个案例，看了一下，视频可以关闭了。
-
-![alt text](/static/images/blog/CleanShot 2024-03-23 at 12.22.00.png)

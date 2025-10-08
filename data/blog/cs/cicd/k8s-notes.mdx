@@ -12,7 +12,7 @@ draft: false
 
 容器是一种操作系统虚拟化形式。可以使用一个容器来运行从小型微服务或软件进程到大型应用程序的所有内容。容器包含所有必要的可执行文件、二进制代码、库和配置文件。但是，与服务器或计算机虚拟化方法不同，**容器不包含操作系统映像**。因此，它们更轻便且可移植，其开销很小。在大型应用程序部署中，可以将多个容器部署为一个或多个容器集群。此类集群可由 Kubernetes 等容器编排程序管理。
 
-![alt text](/static/images/container-vs-vm-inline1_tcm19-82163.png.avif)
+![alt text](/static/images/post/container-vs-vm-inline1_tcm19-82163.png.avif)
 
 了解更多：[什么是容器？](https://www.netapp.com/zh-hans/devops-solutions/what-are-containers/)、[Containers vs. Virtual Machines (VMs): What's the Difference?](https://www.netapp.com/blog/containers-vs-vms/)。
 
@@ -240,7 +240,7 @@ kubectl apply -f deploy/nginx_pod.yaml
 
 ## Pod 和 Container 区别
 
-![](/static/images/pod_and_container.png)
+![](/static/images/post/pod_and_container.png)
 
 container (容器) 的本质是进程，而 pod 是管理这一组进程的资源。pod是k8s资源中的最小单位。
 
@@ -268,11 +268,11 @@ spec:
 
 ```
 
-然后`kubectl apply -f deploy/nginx_deployment.yaml`部署，可以看到结果：![](/static/images/deployment.png)
+然后`kubectl apply -f deploy/nginx_deployment.yaml`部署，可以看到结果：![](/static/images/post/deployment.png)
 
 你还可以查看 minikube 提供的 Web Console 进行可视化管理：
 
-![alt text](/static/images/CleanShot 2024-06-22 at 10.02.51.png)
+![alt text](/static/images/post/CleanShot 2024-06-22 at 10.02.51.png)
 
 ## 探针
 
