@@ -23,6 +23,10 @@ export function filterRegularPosts<T extends PostLike>(posts: T[]): T[] {
   return filterPublishedPosts(posts).filter((post) => !isCategoryIndexPost(post))
 }
 
+export function filterRegularBlogPosts(posts: Blog[]): Blog[] {
+  return filterPublishedPosts(posts).filter((post) => !isCategoryIndexPost(post))
+}
+
 export function getSiblingPosts<T extends PostLike>(posts: T[], directoryPath: string): T[] {
   const normalizedDirectory = directoryPath.replace(/\/$/, '')
   const prefix = `${normalizedDirectory}/`

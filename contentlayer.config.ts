@@ -23,8 +23,8 @@ import rehypeCitation from 'rehype-citation'
 import rehypePrismPlus from 'rehype-prism-plus'
 import rehypePresetMinify from 'rehype-preset-minify'
 import siteMetadata from './data/siteMetadata'
-import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer.js'
-import { filterRegularPosts, isCategoryIndexPost } from './lib/blog'
+import { allCoreContent, MDXDocumentDate, sortPosts } from 'pliny/utils/contentlayer.js'
+import { filterRegularPosts, filterRegularBlogPosts, isCategoryIndexPost } from './lib/blog'
 import prettier from 'prettier'
 
 const root = process.cwd()
@@ -58,8 +58,7 @@ const computedFields: ComputedFields = {
   toc: { type: 'json', resolve: (doc) => extractTocHeadings(doc.body.raw) },
   isArchive: {
     type: 'boolean',
-    resolve: (doc) =>
-      doc.archive === true || doc._raw.flattenedPath.startsWith('blog/archive/'),
+    resolve: (doc) => doc.archive === true || doc._raw.flattenedPath.startsWith('blog/archive/'),
   },
 }
 
@@ -94,7 +93,7 @@ function createSearchIndex(allBlogs) {
   ) {
     writeFileSync(
       `public/${path.basename(siteMetadata.search.kbarConfig.searchDocumentsPath)}`,
-      JSON.stringify(allCoreContent(sortPosts(filterRegularPosts(allBlogs))))
+      JSON.stringify(allCoreContent(sortPosts(filterRegularBlogPosts(allBlogs))))
     )
     console.log('Local search index generated...')
   }
