@@ -13,8 +13,14 @@ import PostBanner from '@/layouts/PostBanner'
 import { Metadata } from 'next'
 import siteMetadata from '@/data/siteMetadata'
 import { notFound } from 'next/navigation'
-import { filterRegularPosts, getSiblingPosts, isCategoryIndexPost } from '@/lib/blog'
+import {
+  filterRegularPosts,
+  filterPublishedPosts,
+  getSiblingPosts,
+  isCategoryIndexPost,
+} from '@/lib/blog'
 import { formatDate } from 'pliny/utils/formatDate'
+import ArchiveBadge from '@/components/ArchiveBadge'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 
@@ -50,6 +56,9 @@ function CategoryPostList({ posts }: { posts: CoreContent<Blog>[] }) {
                   <Link href={`/${item.path}`} className="text-gray-900 dark:text-gray-100">
                     {item.title}
                   </Link>
+                  {item.isArchive ? (
+                    <ArchiveBadge className="ml-3 align-middle" size="compact" />
+                  ) : null}
                 </h3>
                 {item.tags?.length ? (
                   <div className="flex flex-wrap">
@@ -73,7 +82,7 @@ export async function generateMetadata(props: {
 }): Promise<Metadata | undefined> {
   const params = await props.params
   const slug = decodeURI(params.slug.join('/'))
-  const post = allBlogs.find((p) => p.slug === slug)
+  const post = filterPublishedPosts(allBlogs).find((p) => p.slug === slug)
   const authorList = post?.authors || ['default']
   const authorDetails = authorList.map((author) => {
     const authorResults = allAuthors.find((p) => p.slug === author)
@@ -121,14 +130,16 @@ export async function generateMetadata(props: {
 }
 
 export const generateStaticParams = async () => {
-  return allBlogs.map((p) => ({ slug: p.slug.split('/').map((name) => decodeURI(name)) }))
+  return filterPublishedPosts(allBlogs).map((p) => ({
+    slug: p.slug.split('/').map((name) => decodeURI(name)),
+  }))
 }
 
 export default async function Page(props: { params: Promise<{ slug: string[] }> }) {
   const params = await props.params
   const slug = decodeURI(params.slug.join('/'))
-  // Filter out drafts in production
-  const sortedCoreContents = allCoreContent(sortPosts(allBlogs))
+  const publishedBlogs = filterPublishedPosts(allBlogs)
+  const sortedCoreContents = allCoreContent(sortPosts(publishedBlogs))
   const visibleCoreContents = filterRegularPosts(sortedCoreContents)
   const postIndex = sortedCoreContents.findIndex((p) => p.slug === slug)
   if (postIndex === -1) {
@@ -138,7 +149,10 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
   const navIndex = visibleCoreContents.findIndex((p) => p.slug === slug)
   const prev = navIndex === -1 ? undefined : visibleCoreContents[navIndex + 1]
   const next = navIndex === -1 ? undefined : visibleCoreContents[navIndex - 1]
-  const post = allBlogs.find((p) => p.slug === slug) as Blog
+  const post = publishedBlogs.find((p) => p.slug === slug) as Blog
+  if (!post) {
+    return notFound()
+  }
   const authorList = post?.authors || ['default']
   const authorDetails = authorList.map((author) => {
     const authorResults = allAuthors.find((p) => p.slug === author)
@@ -158,7 +172,9 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
   const categoryDirectory = isCategoryIndex ? post.path.replace(/\/index$/, '') : ''
   const categoryPosts =
     isCategoryIndex && categoryDirectory
-      ? allCoreContent(sortPosts(getSiblingPosts(filterRegularPosts(allBlogs), categoryDirectory)))
+      ? allCoreContent(
+          sortPosts(getSiblingPosts(filterRegularPosts(publishedBlogs), categoryDirectory))
+        )
       : []
 
   return (

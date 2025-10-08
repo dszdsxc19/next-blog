@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import ArchiveBadge from '@/components/ArchiveBadge'
 import Image from '@/components/Image'
 import Bleed from 'pliny/ui/Bleed'
 import { CoreContent } from 'pliny/utils/contentlayer'
@@ -18,7 +19,7 @@ interface LayoutProps {
 }
 
 export default function PostMinimal({ content, next, prev, children }: LayoutProps) {
-  const { slug, title, images } = content
+  const { slug, title, images, isArchive } = content
   const displayImage =
     images && images.length > 0 ? images[0] : 'https://picsum.photos/seed/picsum/800/400'
 
@@ -37,6 +38,11 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
             </div>
             <div className="relative pt-10">
               <PageTitle>{title}</PageTitle>
+              {isArchive ? (
+                <div className="mt-3 flex justify-center">
+                  <ArchiveBadge />
+                </div>
+              ) : null}
             </div>
           </div>
           <div className="prose dark:prose-invert max-w-none py-4">{children}</div>

@@ -28,8 +28,6 @@ import { filterRegularPosts, isCategoryIndexPost } from './lib/blog'
 import prettier from 'prettier'
 
 const root = process.cwd()
-const isProduction = process.env.NODE_ENV === 'production'
-
 // heroicon mini link
 const icon = fromHtmlIsomorphic(
   `
@@ -58,6 +56,11 @@ const computedFields: ComputedFields = {
     resolve: (doc) => doc._raw.sourceFilePath,
   },
   toc: { type: 'json', resolve: (doc) => extractTocHeadings(doc.body.raw) },
+  isArchive: {
+    type: 'boolean',
+    resolve: (doc) =>
+      doc.archive === true || doc._raw.flattenedPath.startsWith('blog/archive/'),
+  },
 }
 
 /**
@@ -69,7 +72,7 @@ async function createTagCount(allBlogs) {
     if (isCategoryIndexPost(file)) {
       return
     }
-    if (file.tags && (!isProduction || file.draft !== true)) {
+    if (file.tags && file.draft !== true) {
       file.tags.forEach((tag) => {
         const formattedTag = slug(tag)
         if (formattedTag in tagCount) {
@@ -108,6 +111,7 @@ export const Blog = defineDocumentType(() => ({
     category: { type: 'boolean' },
     lastmod: { type: 'date' },
     draft: { type: 'boolean' },
+    archive: { type: 'boolean' },
     summary: { type: 'string' },
     images: { type: 'json' },
     authors: { type: 'list', of: { type: 'string' } },
