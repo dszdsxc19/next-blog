@@ -99,6 +99,19 @@ module.exports = () => {
         use: ['@svgr/webpack'],
       })
 
+      // Fix for @floating-ui vendor chunks issue in Next.js 15
+      config.optimization = config.optimization || {}
+      config.optimization.splitChunks = config.optimization.splitChunks || {}
+      config.optimization.splitChunks.cacheGroups = config.optimization.splitChunks.cacheGroups || {}
+      
+      // Force @floating-ui packages to be bundled together
+      config.optimization.splitChunks.cacheGroups.floatingUI = {
+        test: /[\\/]node_modules[\\/]@floating-ui[\\/]/,
+        name: 'floating-ui',
+        chunks: 'all',
+        priority: 10,
+      }
+
       return config
     },
   })
