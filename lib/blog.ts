@@ -28,8 +28,7 @@ export function getSiblingPosts<T extends PostLike>(posts: T[], directoryPath: s
     if (!post.path.startsWith(prefix)) {
       return false
     }
-    const remainder = post.path.slice(prefix.length)
-    if (remainder.length === 0 || remainder.includes('/')) {
+    if (post.path === normalizedDirectory) {
       return false
     }
     return !isCategoryIndexPost(post)
