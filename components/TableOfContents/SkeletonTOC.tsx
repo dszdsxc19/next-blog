@@ -7,7 +7,6 @@ import { smoothScrollToElement, calculateScrollOffset } from '@/lib/utils/smooth
 
 const SkeletonTOC: React.FC<TableOfContentsProps> = memo(
   ({ toc, className = '', minHeadings = 3, maxDepth = 6 }) => {
-    const [isExpanded, setIsExpanded] = useState(false)
     const [isHovered, setIsHovered] = useState(false)
 
     // Memoize filtered TOC to prevent unnecessary recalculations
@@ -46,29 +45,7 @@ const SkeletonTOC: React.FC<TableOfContentsProps> = memo(
         onMouseLeave={() => setIsHovered(false)}
       >
         <div className="skeleton-toc-container">
-          {/* Toggle Button */}
-          <button
-            onClick={() => setIsExpanded(!isExpanded)}
-            className="skeleton-toc-toggle"
-            aria-label={isExpanded ? 'Hide table of contents' : 'Show table of contents'}
-            aria-expanded={isExpanded}
-          >
-            <svg
-              className={`skeleton-toc-toggle-icon ${isExpanded ? 'skeleton-toc-toggle-expanded' : ''}`}
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M3 12h18M3 6h18M3 18h18" />
-            </svg>
-          </button>
-
-          {(isExpanded || isHovered) && (
+          {isHovered ? (
             <div className="skeleton-toc-expanded">
               <h3 className="skeleton-toc-title">Contents</h3>
               <ul className="skeleton-toc-list">
@@ -101,24 +78,22 @@ const SkeletonTOC: React.FC<TableOfContentsProps> = memo(
                 })}
               </ul>
             </div>
-          )}
-
-          {!isExpanded && !isHovered && (
+          ) : (
             // Skeleton state
             <div className="skeleton-toc-skeleton">
               <div className="skeleton-toc-lines">
-                {filteredToc.slice(0, Math.min(5, filteredToc.length)).map((item, index) => (
+                {filteredToc.slice(0, Math.min(4, filteredToc.length)).map((item, index) => (
                   <div
                     key={`skeleton-${index}`}
                     className={`skeleton-toc-line skeleton-toc-line-depth-${item.depth}`}
                     style={{
-                      width: `${Math.max(40, Math.min(90, item.value.length * 1.2))}%`,
+                      width: `${Math.max(30, Math.min(80, item.value.length * 1.2))}%`,
                       animationDelay: `${index * 0.1}s`,
                     }}
                   />
                 ))}
-                {filteredToc.length > 5 && (
-                  <div className="skeleton-toc-more">+{filteredToc.length - 5} more</div>
+                {filteredToc.length > 4 && (
+                  <div className="skeleton-toc-more">+{filteredToc.length - 4} more</div>
                 )}
               </div>
             </div>
