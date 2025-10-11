@@ -98,6 +98,14 @@ const siteMetadata = {
     //   indexName: 'docsearch',
     // },
   },
+  toc: {
+    enabled: true, // Enable TOC globally
+    minHeadings: 3, // Minimum number of headings required to show TOC
+    maxDepth: 6, // Maximum heading depth to include (1-6)
+    position: 'auto', // 'auto', 'sidebar', 'top', or 'floating'
+    sticky: true, // Make TOC sticky when in sidebar or floating position
+    showToggle: false, // Show toggle button (auto-enabled on mobile)
+  },
 }
 
 module.exports = siteMetadata

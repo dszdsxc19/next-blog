@@ -1,4 +1,6 @@
-import { ReactNode } from 'react'
+'use client'
+
+import { ReactNode, useEffect, useState } from 'react'
 import ArchiveBadge from '@/components/ArchiveBadge'
 import Image from '@/components/Image'
 import Bleed from 'pliny/ui/Bleed'
@@ -8,6 +10,10 @@ import Comments from '@/components/Comments'
 import Link from '@/components/Link'
 import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
+import { SkeletonTOC } from '@/components/TableOfContents'
+import { extractTOCFromDOM, shouldShowTOC } from '@/lib/utils/extractTOC'
+import { useTOCConfig } from '@/lib/hooks/useTOCConfig'
+import { TOCItem } from '@/types/toc'
 import siteMetadata from '@/data/siteMetadata'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 
@@ -19,13 +25,27 @@ interface LayoutProps {
 }
 
 export default function PostMinimal({ content, next, prev, children }: LayoutProps) {
-  const { slug, title, images, isArchive } = content
+  const { slug, title, images, isArchive, toc: postTOCConfig } = content
   const displayImage =
     images && images.length > 0 ? images[0] : 'https://picsum.photos/seed/picsum/800/400'
+  const [toc, setToc] = useState<TOCItem[]>([])
+
+  // Get TOC configuration
+  const { config: tocConfig, shouldShowTOC: tocEnabled } = useTOCConfig(postTOCConfig)
+
+  // Extract TOC from DOM after component mounts
+  useEffect(() => {
+    const extractedTOC = extractTOCFromDOM()
+    setToc(extractedTOC)
+  }, [children])
 
   return (
     <SectionContainer>
       <ScrollTopAndComment />
+      {/* Skeleton TOC - positioned fixed on the right */}
+      {tocEnabled && shouldShowTOC(toc, tocConfig.minHeadings) && (
+        <SkeletonTOC toc={toc} minHeadings={tocConfig.minHeadings} maxDepth={tocConfig.maxDepth} />
+      )}
       <article>
         <div>
           <div className="space-y-1 pb-10 text-center dark:border-gray-700">
@@ -45,6 +65,9 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
               ) : null}
             </div>
           </div>
+
+
+
           <div className="prose dark:prose-invert max-w-none py-4">{children}</div>
           {siteMetadata.comments && (
             <div className="pt-6 pb-6 text-center text-gray-700 dark:text-gray-300" id="comment">

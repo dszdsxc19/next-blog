@@ -4,6 +4,10 @@
 @source '../node_modules/pliny';
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Import TOC styles */
+@import './toc.css';
+@import './skeleton-toc.css';
+
 /* Core theme configuration */
 @theme {
   /* Font families */

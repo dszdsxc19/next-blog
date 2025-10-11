@@ -1,0 +1,182 @@
+/* Table of Contents Styles */
+
+/* Base TOC Container */
+.table-of-contents {
+  @apply bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm;
+}
+
+/* Position-specific styles */
+.toc-sidebar {
+  @apply max-w-xs;
+}
+
+.toc-top {
+  @apply w-full max-w-4xl mx-auto;
+}
+
+.toc-floating {
+  @apply fixed right-4 top-1/2 transform -translate-y-1/2 max-w-xs z-40;
+  @apply hidden xl:block;
+}
+
+/* Sticky positioning */
+.toc-sticky {
+  @apply sticky top-16;
+}
+
+/* Responsive classes */
+.toc-mobile {
+  @apply block;
+}
+
+.toc-tablet {
+  @apply block;
+}
+
+.toc-desktop {
+  @apply block;
+}
+
+/* TOC Title */
+.toc-title {
+  @apply text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4 px-4 pt-4;
+}
+
+/* TOC Wrapper */
+.toc-wrapper {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.toc-hidden {
+  @apply max-h-0 overflow-hidden opacity-0;
+}
+
+.toc-visible {
+  @apply max-h-screen opacity-100;
+}
+
+/* TOC Content List */
+.toc-content {
+  @apply list-none p-0 m-0 px-4 pb-4;
+}
+
+/* TOC Items */
+.toc-item {
+  @apply mb-1;
+}
+
+.toc-item-active {
+  @apply bg-primary-50 dark:bg-primary-900/20 rounded-md;
+}
+
+/* TOC Links */
+.toc-link {
+  @apply block py-2 px-3 text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200 rounded-md;
+  @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800;
+}
+
+.toc-link-active {
+  @apply text-primary-600 dark:text-primary-400 font-medium;
+}
+
+/* Depth-based indentation */
+.toc-link-depth-1 {
+  @apply pl-3;
+}
+
+.toc-link-depth-2 {
+  @apply pl-3;
+}
+
+.toc-link-depth-3 {
+  @apply pl-6;
+}
+
+.toc-link-depth-4 {
+  @apply pl-9;
+}
+
+.toc-link-depth-5 {
+  @apply pl-12;
+}
+
+.toc-link-depth-6 {
+  @apply pl-15;
+}
+
+/* TOC Text */
+.toc-text {
+  @apply truncate;
+}
+
+/* TOC Toggle Button */
+.toc-toggle {
+  @apply w-full flex items-center justify-between px-4 py-3 text-left text-sm font-medium text-gray-700 dark:text-gray-300;
+  @apply hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800;
+  @apply border-b border-gray-200 dark:border-gray-700 transition-colors duration-200;
+}
+
+.toc-toggle-icon {
+  @apply text-lg font-bold text-primary-600 dark:text-primary-400 ml-2;
+}
+
+.toc-toggle-text {
+  @apply flex-1;
+}
+
+.toc-toggle-open .toc-toggle-icon {
+  @apply transform rotate-0 transition-transform duration-200;
+}
+
+.toc-toggle-closed .toc-toggle-icon {
+  @apply transform rotate-0 transition-transform duration-200;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .toc-floating {
+    @apply hidden;
+  }
+  
+  .toc-sidebar {
+    @apply max-w-full;
+  }
+  
+  .table-of-contents {
+    @apply mx-4;
+  }
+}
+
+@media (max-width: 1024px) {
+  .toc-floating {
+    @apply hidden;
+  }
+}
+
+/* Dark mode specific adjustments */
+@media (prefers-color-scheme: dark) {
+  .table-of-contents {
+    @apply shadow-lg;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .toc-wrapper,
+  .toc-link,
+  .toc-toggle-icon {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  .toc-toggle-icon {
+    transform: none !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .table-of-contents {
+    @apply hidden;
+  }
+}

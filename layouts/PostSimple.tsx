@@ -1,4 +1,6 @@
-import { ReactNode } from 'react'
+'use client'
+
+import { ReactNode, useEffect, useState } from 'react'
 import { formatDate } from 'pliny/utils/formatDate'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog } from 'contentlayer/generated'
@@ -7,6 +9,10 @@ import Comments from '@/components/Comments'
 import Link from '@/components/Link'
 import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
+import { SkeletonTOC } from '@/components/TableOfContents'
+import { extractTOCFromDOM, shouldShowTOC } from '@/lib/utils/extractTOC'
+import { useTOCConfig } from '@/lib/hooks/useTOCConfig'
+import { TOCItem } from '@/types/toc'
 import siteMetadata from '@/data/siteMetadata'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 
@@ -18,11 +24,25 @@ interface LayoutProps {
 }
 
 export default function PostLayout({ content, next, prev, children }: LayoutProps) {
-  const { path, slug, date, title, isArchive } = content
+  const { path, slug, date, title, isArchive, toc: postTOCConfig } = content
+  const [toc, setToc] = useState<TOCItem[]>([])
+
+  // Get TOC configuration
+  const { config: tocConfig, shouldShowTOC: tocEnabled } = useTOCConfig(postTOCConfig)
+
+  // Extract TOC from DOM after component mounts
+  useEffect(() => {
+    const extractedTOC = extractTOCFromDOM()
+    setToc(extractedTOC)
+  }, [children])
 
   return (
     <SectionContainer>
       <ScrollTopAndComment />
+      {/* Skeleton TOC - positioned fixed on the right */}
+      {tocEnabled && shouldShowTOC(toc, tocConfig.minHeadings) && (
+        <SkeletonTOC toc={toc} minHeadings={tocConfig.minHeadings} maxDepth={tocConfig.maxDepth} />
+      )}
       <article>
         <div>
           <header>

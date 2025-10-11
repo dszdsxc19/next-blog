@@ -117,6 +117,10 @@ export const Blog = defineDocumentType(() => ({
     layout: { type: 'string' },
     bibliography: { type: 'string' },
     canonicalUrl: { type: 'string' },
+    toc: {
+      type: 'json',
+      description: 'Table of contents configuration. Can be boolean or object with settings.',
+    },
   },
   computedFields: {
     ...computedFields,

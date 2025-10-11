@@ -1,0 +1,222 @@
+/* Skeleton Table of Contents Styles */
+
+/* Custom animations */
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Base skeleton TOC container */
+.skeleton-toc {
+  @apply fixed right-6 top-20 z-50;
+  @apply hidden lg:block;
+  @apply transition-all duration-300 ease-in-out;
+}
+
+.skeleton-toc-container {
+  @apply relative;
+}
+
+/* Toggle button styles */
+.skeleton-toc-toggle {
+  @apply mb-2 w-8 h-8 rounded-md;
+  @apply bg-white dark:bg-gray-900;
+  @apply border border-gray-200 dark:border-gray-700;
+  @apply shadow-sm hover:shadow-md;
+  @apply flex items-center justify-center;
+  @apply text-gray-500 dark:text-gray-400;
+  @apply hover:text-gray-700 dark:hover:text-gray-200;
+  @apply hover:bg-gray-50 dark:hover:bg-gray-800;
+  @apply transition-all duration-200 ease-in-out;
+  @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  @apply dark:focus:ring-offset-gray-900;
+}
+
+.skeleton-toc-toggle-icon {
+  @apply w-4 h-4 transition-transform duration-200 ease-in-out;
+}
+
+.skeleton-toc-toggle-expanded {
+  @apply rotate-90;
+}
+
+/* Skeleton state styles */
+.skeleton-toc-skeleton {
+  @apply py-3 px-3;
+  @apply transition-all duration-300 ease-in-out;
+  @apply bg-white/80 dark:bg-gray-900/80;
+  @apply border border-gray-200/50 dark:border-gray-700/50;
+  @apply rounded-lg shadow-sm;
+  @apply backdrop-blur-sm;
+}
+
+.skeleton-toc-lines {
+  @apply space-y-2;
+}
+
+.skeleton-toc-line {
+  @apply h-2 bg-gray-300 dark:bg-gray-600 rounded-full;
+  @apply animate-pulse;
+  @apply transition-all duration-200 ease-in-out;
+}
+
+.skeleton-toc-line:hover {
+  @apply bg-gray-400 dark:bg-gray-500;
+}
+
+/* Depth-based indentation for skeleton lines */
+.skeleton-toc-line-depth-1,
+.skeleton-toc-line-depth-2 {
+  @apply ml-0;
+}
+
+.skeleton-toc-line-depth-3 {
+  @apply ml-3;
+}
+
+.skeleton-toc-line-depth-4 {
+  @apply ml-6;
+}
+
+.skeleton-toc-line-depth-5 {
+  @apply ml-9;
+}
+
+.skeleton-toc-line-depth-6 {
+  @apply ml-12;
+}
+
+.skeleton-toc-more {
+  @apply text-xs text-gray-500 dark:text-gray-400 mt-3 ml-0;
+  @apply animate-pulse;
+}
+
+/* Expanded state styles */
+.skeleton-toc-expanded {
+  @apply bg-white dark:bg-gray-900;
+  @apply border border-gray-200 dark:border-gray-700;
+  @apply rounded-lg shadow-lg;
+  @apply p-3 min-w-56 max-w-72;
+  @apply transform translate-x-0 transition-all duration-200;
+  animation: slideInFromRight 0.2s ease-out;
+  @apply backdrop-blur-sm bg-white/95 dark:bg-gray-900/95;
+}
+
+.skeleton-toc-title {
+  @apply text-xs font-medium text-gray-700 dark:text-gray-300 mb-2;
+  @apply border-b border-gray-200 dark:border-gray-700 pb-2;
+}
+
+.skeleton-toc-list {
+  @apply list-none p-0 m-0 space-y-1;
+  @apply max-h-96 overflow-y-auto;
+  /* Custom scrollbar styling handled by webkit selectors below */
+}
+
+.skeleton-toc-item {
+  @apply transition-all duration-150 ease-in-out;
+}
+
+.skeleton-toc-item-active {
+  @apply bg-primary-50 dark:bg-primary-900/20 rounded-md;
+}
+
+.skeleton-toc-link {
+  @apply block py-1.5 px-2 text-sm text-gray-600 dark:text-gray-300;
+  @apply hover:text-primary-600 dark:hover:text-primary-400;
+  @apply hover:bg-gray-50 dark:hover:bg-gray-800;
+  @apply transition-colors duration-150 rounded-md;
+  @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  @apply dark:focus:ring-offset-gray-900;
+}
+
+.skeleton-toc-link-active {
+  @apply text-primary-600 dark:text-primary-400 font-medium;
+}
+
+/* Depth-based indentation for expanded links */
+.skeleton-toc-depth-1 .skeleton-toc-link,
+.skeleton-toc-depth-2 .skeleton-toc-link {
+  @apply pl-2;
+}
+
+.skeleton-toc-depth-3 .skeleton-toc-link {
+  @apply pl-4;
+}
+
+.skeleton-toc-depth-4 .skeleton-toc-link {
+  @apply pl-6;
+}
+
+.skeleton-toc-depth-5 .skeleton-toc-link {
+  @apply pl-8;
+}
+
+.skeleton-toc-depth-6 .skeleton-toc-link {
+  @apply pl-10;
+}
+
+.skeleton-toc-text {
+  @apply truncate block;
+}
+
+/* Responsive behavior */
+@media (max-width: 1024px) {
+  .skeleton-toc {
+    @apply hidden;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-toc-line {
+    @apply animate-none;
+  }
+  
+  .skeleton-toc-more {
+    @apply animate-none;
+  }
+  
+  .skeleton-toc-expanded {
+    @apply animate-none;
+  }
+  
+  .skeleton-toc,
+  .skeleton-toc-container,
+  .skeleton-toc-skeleton,
+  .skeleton-toc-item,
+  .skeleton-toc-link {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .skeleton-toc {
+    @apply hidden;
+  }
+}
+
+/* Custom scrollbar for webkit browsers */
+.skeleton-toc-list::-webkit-scrollbar {
+  @apply w-1;
+}
+
+.skeleton-toc-list::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.skeleton-toc-list::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+}
+
+.skeleton-toc-list::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-500;
+}
