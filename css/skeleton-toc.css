@@ -14,34 +14,36 @@
 
 /* Base skeleton TOC container */
 .skeleton-toc {
-  @apply absolute right-0 top-2 z-10;
+  @apply absolute -right-2 top-2 z-10;
   @apply hidden lg:block;
   @apply transition-all duration-300 ease-in-out;
 }
 
 .skeleton-toc-container {
   @apply relative;
+  @apply flex justify-end;
 }
 
 
 
 /* Skeleton state styles */
 .skeleton-toc-skeleton {
-  @apply py-2 px-3;
+  @apply py-3 px-4;
   @apply transition-all duration-300 ease-in-out;
   @apply bg-white/90 dark:bg-gray-900/90;
   @apply border border-gray-200/60 dark:border-gray-700/60;
   @apply rounded-md shadow-sm;
   @apply backdrop-blur-sm;
   @apply cursor-pointer;
+  @apply min-w-48 w-48;
 }
 
 .skeleton-toc-lines {
-  @apply space-y-1.5;
+  @apply space-y-2;
 }
 
 .skeleton-toc-line {
-  @apply h-1.5 bg-gray-300 dark:bg-gray-600 rounded-full;
+  @apply h-2 bg-gray-300 dark:bg-gray-600 rounded-full;
   @apply animate-pulse;
   @apply transition-all duration-200 ease-in-out;
 }
@@ -73,8 +75,9 @@
 }
 
 .skeleton-toc-more {
-  @apply text-xs text-gray-500 dark:text-gray-400 mt-3 ml-0;
+  @apply text-xs text-gray-400 dark:text-gray-500 mt-2 ml-0;
   @apply animate-pulse;
+  @apply italic;
 }
 
 /* Expanded state styles */
@@ -82,14 +85,13 @@
   @apply bg-white dark:bg-gray-900;
   @apply border border-gray-200 dark:border-gray-700;
   @apply rounded-md shadow-lg;
-  @apply p-3 min-w-48 max-w-64;
-  @apply transform translate-x-0 transition-all duration-200;
-  animation: slideInFromRight 0.2s ease-out;
+  @apply p-4 w-64;
+  @apply transition-all duration-200;
   @apply backdrop-blur-sm bg-white/95 dark:bg-gray-900/95;
 }
 
 .skeleton-toc-title {
-  @apply text-xs font-medium text-gray-700 dark:text-gray-300 mb-2;
+  @apply text-sm font-medium text-gray-700 dark:text-gray-300 mb-3;
   @apply border-b border-gray-200 dark:border-gray-700 pb-2;
 }
 
@@ -156,7 +158,11 @@
 /* Ensure TOC doesn't interfere with content on smaller screens */
 @media (max-width: 1280px) {
   .skeleton-toc-expanded {
-    @apply max-w-56;
+    @apply w-56;
+  }
+  
+  .skeleton-toc-skeleton {
+    @apply w-40 min-w-40;
   }
 }
 

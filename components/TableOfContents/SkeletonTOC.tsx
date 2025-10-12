@@ -16,7 +16,6 @@ const SkeletonTOC: React.FC<TableOfContentsProps> = memo(
       }
       return toc.filter((item) => item.depth <= maxDepth)
     }, [toc, minHeadings, maxDepth])
-
     // Extract heading IDs for scroll spy
     const headingIds = useMemo(
       () => filteredToc.map((item) => item.url.replace('#', '')),
@@ -56,9 +55,8 @@ const SkeletonTOC: React.FC<TableOfContentsProps> = memo(
                   return (
                     <li
                       key={`${item.url}-${index}`}
-                      className={`skeleton-toc-item skeleton-toc-depth-${item.depth} ${
-                        isActive ? 'skeleton-toc-item-active' : ''
-                      }`}
+                      className={`skeleton-toc-item skeleton-toc-depth-${item.depth} ${isActive ? 'skeleton-toc-item-active' : ''
+                        }`}
                     >
                       <a
                         href={item.url}
@@ -66,9 +64,8 @@ const SkeletonTOC: React.FC<TableOfContentsProps> = memo(
                           e.preventDefault()
                           handleItemClick(id)
                         }}
-                        className={`skeleton-toc-link ${
-                          isActive ? 'skeleton-toc-link-active' : ''
-                        }`}
+                        className={`skeleton-toc-link ${isActive ? 'skeleton-toc-link-active' : ''
+                          }`}
                         aria-current={isActive ? 'location' : undefined}
                       >
                         <span className="skeleton-toc-text">{item.value}</span>
@@ -79,21 +76,21 @@ const SkeletonTOC: React.FC<TableOfContentsProps> = memo(
               </ul>
             </div>
           ) : (
-            // Skeleton state
+            // Skeleton state - show more lines to match actual TOC size
             <div className="skeleton-toc-skeleton">
               <div className="skeleton-toc-lines">
-                {filteredToc.slice(0, Math.min(4, filteredToc.length)).map((item, index) => (
+                {filteredToc.slice(0, Math.min(8, filteredToc.length)).map((item, index) => (
                   <div
                     key={`skeleton-${index}`}
                     className={`skeleton-toc-line skeleton-toc-line-depth-${item.depth}`}
                     style={{
-                      width: `${Math.max(30, Math.min(80, item.value.length * 1.2))}%`,
-                      animationDelay: `${index * 0.1}s`,
+                      width: `${Math.max(50, Math.min(95, 60 + item.value.length * 0.5))}%`,
+                      animationDelay: `${index * 0.05}s`,
                     }}
                   />
                 ))}
-                {filteredToc.length > 4 && (
-                  <div className="skeleton-toc-more">+{filteredToc.length - 4} more</div>
+                {filteredToc.length > 8 && (
+                  <div className="skeleton-toc-more">+{filteredToc.length - 8} more</div>
                 )}
               </div>
             </div>
