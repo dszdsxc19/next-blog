@@ -142,15 +142,6 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                   >
                     {children}
                   </div>
-                  {showToc && (
-                    <aside className="hidden xl:flex xl:w-64 xl:flex-none xl:justify-end">
-                      <SkeletonTOC
-                        toc={toc}
-                        minHeadings={tocConfig.minHeadings}
-                        maxDepth={tocConfig.maxDepth}
-                      />
-                    </aside>
-                  )}
                 </div>
               </div>
               {/* <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
@@ -217,6 +208,17 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                   &larr; Back to the blog
                 </Link>
               </div>
+              {showToc && (
+                <div className="pt-8 xl:min-h-screen">
+                  <div className="sticky top-8 max-h-[calc(100vh-4rem)]">
+                    <SkeletonTOC
+                      toc={toc}
+                      minHeadings={tocConfig.minHeadings}
+                      maxDepth={tocConfig.maxDepth}
+                    />
+                  </div>
+                </div>
+              )}
             </footer>
           </div>
         </div>

@@ -1,9 +1,7 @@
 /* Skeleton Table of Contents Styles */
 
-
 .skeleton-toc {
-  @apply sticky top-24;
-  @apply flex w-full max-h-[calc(100vh-7rem)] flex-col gap-3;
+  @apply flex w-full max-h-[calc(100vh-6rem)] flex-col gap-3;
   @apply text-sm leading-5 text-gray-600 dark:text-gray-300;
 }
 
@@ -20,6 +18,12 @@
   @apply flex-1 overflow-y-auto pt-1;
   @apply space-y-1.5 border-l border-gray-200/70 pl-4 pr-3;
   @apply dark:border-gray-800/70;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.skeleton-toc-list::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 .skeleton-toc-item {
@@ -86,19 +90,4 @@
   }
 }
 
-/* Scrollbar styling */
-.skeleton-toc-list::-webkit-scrollbar {
-  @apply w-1.5;
-}
 
-.skeleton-toc-list::-webkit-scrollbar-track {
-  @apply bg-transparent;
-}
-
-.skeleton-toc-list::-webkit-scrollbar-thumb {
-  @apply rounded-full bg-gray-300 dark:bg-gray-600;
-}
-
-.skeleton-toc-list::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-400 dark:bg-gray-500;
-}
