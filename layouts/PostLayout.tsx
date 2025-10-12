@@ -13,6 +13,7 @@ import Tag from '@/components/Tag'
 import { SkeletonTOC } from '@/components/TableOfContents'
 import { extractTOCFromDOM, shouldShowTOC } from '@/lib/utils/extractTOC'
 import { useTOCConfig } from '@/lib/hooks/useTOCConfig'
+import { useScrollTOCVisibility } from '@/lib/hooks/useScrollTOCVisibility'
 import { TOCItem } from '@/types/toc'
 import siteMetadata from '@/data/siteMetadata'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
@@ -51,6 +52,9 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
   }, [children])
 
   const showToc = tocEnabled && shouldShowTOC(toc, tocConfig.minHeadings)
+
+  // Initialize scroll-based TOC visibility hook
+  const { backLinkRef, tocState } = useScrollTOCVisibility(showToc)
 
   return (
     <SectionContainer>
@@ -199,7 +203,12 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                   </div>
                 )}
               </div>
-              <div className="pt-4 xl:pt-8">
+              <div
+                ref={backLinkRef}
+                className="pt-4 xl:pt-8"
+                role="navigation"
+                aria-label="Blog navigation"
+              >
                 <Link
                   href={`/${basePath}`}
                   className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
@@ -210,7 +219,13 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
               </div>
               {showToc && (
                 <div className="pt-8 xl:min-h-screen">
-                  <div className="sticky top-8 max-h-[calc(100vh-4rem)]">
+                  <div
+                    style={{ position: 'sticky', top: '20px' }}
+                    className={`max-h-[calc(100vh-4rem)] transition-all duration-300 ease-in-out ${tocState.shouldShowTOC ? 'translate-y-0 opacity-100' : 'pointer-events-none -translate-y-4 opacity-0'}`}
+                    role="navigation"
+                    aria-label="Table of contents"
+                    aria-hidden={!tocState.shouldShowTOC}
+                  >
                     <SkeletonTOC
                       toc={toc}
                       minHeadings={tocConfig.minHeadings}
