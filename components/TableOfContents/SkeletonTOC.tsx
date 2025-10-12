@@ -11,7 +11,12 @@ const SkeletonTOC: React.FC<TableOfContentsProps> = memo(
       if (!toc || toc.length < minHeadings) {
         return []
       }
-      return toc.filter((item) => item.depth <= maxDepth)
+
+      const depthLimit = Math.min(Math.max(maxDepth, 1), 4)
+
+      return toc
+        .filter((item) => item.depth <= depthLimit)
+        .filter((item) => item.value && item.value.trim().length > 0)
     }, [toc, minHeadings, maxDepth])
 
     const headingIds = useMemo(

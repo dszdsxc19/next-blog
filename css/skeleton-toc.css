@@ -1,10 +1,9 @@
 /* Skeleton Table of Contents Styles */
 
+
 .skeleton-toc {
-  @apply flex flex-col;
   @apply sticky top-24;
-  @apply w-full;
-  @apply gap-4;
+  @apply flex w-full max-h-[calc(100vh-7rem)] flex-col gap-3;
   @apply text-sm leading-5 text-gray-600 dark:text-gray-300;
 }
 
@@ -13,16 +12,14 @@
 }
 
 .skeleton-toc-title {
-  @apply text-xs font-semibold uppercase tracking-[0.35em] leading-4;
-  @apply text-gray-400 dark:text-gray-500;
-  @apply select-none;
+  @apply text-xs font-semibold uppercase tracking-[0.3em] text-gray-400 dark:text-gray-500;
+  @apply leading-4 select-none;
 }
 
 .skeleton-toc-list {
-  @apply flex-1 space-y-1.5 overflow-y-auto;
-  @apply border-l border-gray-200/70 dark:border-gray-800/70;
-  @apply pl-4 pr-3;
-  @apply max-h-[calc(100vh-8rem)];
+  @apply flex-1 overflow-y-auto pt-1;
+  @apply space-y-1.5 border-l border-gray-200/70 pl-4 pr-3;
+  @apply dark:border-gray-800/70;
 }
 
 .skeleton-toc-item {
@@ -30,7 +27,7 @@
 }
 
 .skeleton-toc-link {
-  @apply flex gap-2 rounded py-1 text-xs leading-5 text-gray-500 transition-colors duration-150;
+  @apply flex gap-2 rounded py-1 text-[13px] text-gray-500 transition-colors duration-150;
   @apply dark:text-gray-400;
   @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2;
   @apply dark:focus-visible:ring-primary-400 dark:focus-visible:ring-offset-gray-900;
@@ -41,7 +38,7 @@
 }
 
 .skeleton-toc-marker {
-  @apply mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-gray-300 transition-all duration-150;
+  @apply relative mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-gray-300 transition-all duration-150;
   @apply dark:bg-gray-600;
 }
 
@@ -50,7 +47,7 @@
 }
 
 .skeleton-toc-item-active .skeleton-toc-link {
-  @apply text-primary-600 dark:text-primary-400 font-medium;
+  @apply font-medium text-primary-600 dark:text-primary-400;
 }
 
 .skeleton-toc-item-active .skeleton-toc-marker {
@@ -68,14 +65,6 @@
 
 .skeleton-toc-depth-4 .skeleton-toc-link {
   @apply pl-4;
-}
-
-.skeleton-toc-depth-5 .skeleton-toc-link {
-  @apply pl-6;
-}
-
-.skeleton-toc-depth-6 .skeleton-toc-link {
-  @apply pl-8;
 }
 
 @media (max-width: 1279px) {

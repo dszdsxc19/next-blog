@@ -135,9 +135,15 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
             </div>
             <div className="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0 dark:divide-gray-700">
               <div className="pt-10 pb-8">
-                <div className="relative xl:flex xl:items-start xl:gap-10">
+                <div className="relative xl:flex xl:items-start xl:gap-12">
+                  <div
+                    className="prose dark:prose-invert max-w-none flex-1"
+                    data-toc-scope="article"
+                  >
+                    {children}
+                  </div>
                   {showToc && (
-                    <aside className="hidden xl:flex xl:w-64 xl:flex-none">
+                    <aside className="hidden xl:flex xl:w-64 xl:flex-none xl:justify-end">
                       <SkeletonTOC
                         toc={toc}
                         minHeadings={tocConfig.minHeadings}
@@ -145,7 +151,6 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                       />
                     </aside>
                   )}
-                  <div className="prose dark:prose-invert max-w-none flex-1">{children}</div>
                 </div>
               </div>
               {/* <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">

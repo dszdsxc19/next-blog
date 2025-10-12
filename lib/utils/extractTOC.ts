@@ -66,7 +66,10 @@ const extractTOCFromHTMLServer = (htmlContent: string): TOCItem[] => {
 export const extractTOCFromDOM = (): TOCItem[] => {
   if (typeof window === 'undefined') return []
 
-  const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6')
+  const scopeSelector = '[data-toc-scope="article"]'
+  const scopedRoot = document.querySelector(scopeSelector)
+  const root: ParentNode = scopedRoot ?? document
+  const headings = root.querySelectorAll('h1, h2, h3, h4, h5, h6')
   const toc: TOCItem[] = []
 
   headings.forEach((heading) => {

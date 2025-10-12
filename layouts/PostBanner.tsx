@@ -67,9 +67,15 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
 
 
           <div className="py-4">
-            <div className="relative xl:flex xl:items-start xl:gap-10">
+            <div className="relative xl:flex xl:items-start xl:gap-12">
+              <div
+                className="prose dark:prose-invert max-w-none flex-1"
+                data-toc-scope="article"
+              >
+                {children}
+              </div>
               {showToc && (
-                <aside className="hidden xl:flex xl:w-64 xl:flex-none">
+                <aside className="hidden xl:flex xl:w-64 xl:flex-none xl:justify-end">
                   <SkeletonTOC
                     toc={toc}
                     minHeadings={tocConfig.minHeadings}
@@ -77,7 +83,6 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
                   />
                 </aside>
               )}
-              <div className="prose dark:prose-invert max-w-none flex-1">{children}</div>
             </div>
           </div>
           {siteMetadata.comments && (
