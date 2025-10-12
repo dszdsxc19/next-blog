@@ -50,6 +50,8 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
     setToc(extractedTOC)
   }, [children])
 
+  const showToc = tocEnabled && shouldShowTOC(toc, tocConfig.minHeadings)
+
   return (
     <SectionContainer>
       <ScrollTopAndComment />
@@ -132,12 +134,19 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
               </dl>
             </div>
             <div className="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0 dark:divide-gray-700">
-              <div className="prose dark:prose-invert max-w-none pt-10 pb-8 relative">
-                {/* Skeleton TOC - positioned in article top-right */}
-                {tocEnabled && shouldShowTOC(toc, tocConfig.minHeadings) && (
-                  <SkeletonTOC toc={toc} minHeadings={tocConfig.minHeadings} maxDepth={tocConfig.maxDepth} />
-                )}
-                {children}
+              <div className="pt-10 pb-8">
+                <div className="relative xl:flex xl:items-start xl:gap-10">
+                  {showToc && (
+                    <aside className="hidden xl:flex xl:w-64 xl:flex-none">
+                      <SkeletonTOC
+                        toc={toc}
+                        minHeadings={tocConfig.minHeadings}
+                        maxDepth={tocConfig.maxDepth}
+                      />
+                    </aside>
+                  )}
+                  <div className="prose dark:prose-invert max-w-none flex-1">{children}</div>
+                </div>
               </div>
               {/* <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
                 <Link href={discussUrl(path)} rel="nofollow">

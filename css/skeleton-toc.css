@@ -1,205 +1,105 @@
 /* Skeleton Table of Contents Styles */
 
-/* Custom animations */
-@keyframes slideInFromRight {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-/* Base skeleton TOC container */
 .skeleton-toc {
-  @apply absolute -right-2 top-2 z-10;
-  @apply hidden lg:block;
-  @apply transition-all duration-300 ease-in-out;
+  @apply flex flex-col;
+  @apply sticky top-24;
+  @apply w-full;
+  @apply gap-4;
+  @apply text-sm leading-5 text-gray-600 dark:text-gray-300;
 }
 
-.skeleton-toc-container {
-  @apply relative;
-  @apply flex justify-end;
-}
-
-
-
-/* Skeleton state styles */
-.skeleton-toc-skeleton {
-  @apply py-3 px-4;
-  @apply transition-all duration-300 ease-in-out;
-  @apply bg-white/90 dark:bg-gray-900/90;
-  @apply border border-gray-200/60 dark:border-gray-700/60;
-  @apply rounded-md shadow-sm;
-  @apply backdrop-blur-sm;
-  @apply cursor-pointer;
-  @apply min-w-48 w-48;
-}
-
-.skeleton-toc-lines {
-  @apply space-y-2;
-}
-
-.skeleton-toc-line {
-  @apply h-2 bg-gray-300 dark:bg-gray-600 rounded-full;
-  @apply animate-pulse;
-  @apply transition-all duration-200 ease-in-out;
-}
-
-.skeleton-toc-line:hover {
-  @apply bg-gray-400 dark:bg-gray-500;
-}
-
-/* Depth-based indentation for skeleton lines */
-.skeleton-toc-line-depth-1,
-.skeleton-toc-line-depth-2 {
-  @apply ml-0;
-}
-
-.skeleton-toc-line-depth-3 {
-  @apply ml-3;
-}
-
-.skeleton-toc-line-depth-4 {
-  @apply ml-6;
-}
-
-.skeleton-toc-line-depth-5 {
-  @apply ml-9;
-}
-
-.skeleton-toc-line-depth-6 {
-  @apply ml-12;
-}
-
-.skeleton-toc-more {
-  @apply text-xs text-gray-400 dark:text-gray-500 mt-2 ml-0;
-  @apply animate-pulse;
-  @apply italic;
-}
-
-/* Expanded state styles */
-.skeleton-toc-expanded {
-  @apply bg-white dark:bg-gray-900;
-  @apply border border-gray-200 dark:border-gray-700;
-  @apply rounded-md shadow-lg;
-  @apply p-4 w-64;
-  @apply transition-all duration-200;
-  @apply backdrop-blur-sm bg-white/95 dark:bg-gray-900/95;
+.skeleton-toc-header {
+  @apply flex items-center justify-between;
 }
 
 .skeleton-toc-title {
-  @apply text-sm font-medium text-gray-700 dark:text-gray-300 mb-3;
-  @apply border-b border-gray-200 dark:border-gray-700 pb-2;
+  @apply text-xs font-semibold uppercase tracking-[0.35em] leading-4;
+  @apply text-gray-400 dark:text-gray-500;
+  @apply select-none;
 }
 
 .skeleton-toc-list {
-  @apply list-none p-0 m-0 space-y-1;
-  @apply max-h-96 overflow-y-auto;
-  /* Custom scrollbar styling handled by webkit selectors below */
+  @apply flex-1 space-y-1.5 overflow-y-auto;
+  @apply border-l border-gray-200/70 dark:border-gray-800/70;
+  @apply pl-4 pr-3;
+  @apply max-h-[calc(100vh-8rem)];
 }
 
 .skeleton-toc-item {
-  @apply transition-all duration-150 ease-in-out;
-}
-
-.skeleton-toc-item-active {
-  @apply bg-primary-50 dark:bg-primary-900/20 rounded-md;
+  @apply relative;
 }
 
 .skeleton-toc-link {
-  @apply block py-1.5 px-2 text-sm text-gray-600 dark:text-gray-300;
-  @apply hover:text-primary-600 dark:hover:text-primary-400;
-  @apply hover:bg-gray-50 dark:hover:bg-gray-800;
-  @apply transition-colors duration-150 rounded-md;
-  @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
-  @apply dark:focus:ring-offset-gray-900;
+  @apply flex gap-2 rounded py-1 text-xs leading-5 text-gray-500 transition-colors duration-150;
+  @apply dark:text-gray-400;
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2;
+  @apply dark:focus-visible:ring-primary-400 dark:focus-visible:ring-offset-gray-900;
 }
 
-.skeleton-toc-link-active {
-  @apply text-primary-600 dark:text-primary-400 font-medium;
+.skeleton-toc-link:hover {
+  @apply text-primary-600 dark:text-primary-400;
 }
 
-/* Depth-based indentation for expanded links */
-.skeleton-toc-depth-1 .skeleton-toc-link,
-.skeleton-toc-depth-2 .skeleton-toc-link {
-  @apply pl-2;
-}
-
-.skeleton-toc-depth-3 .skeleton-toc-link {
-  @apply pl-4;
-}
-
-.skeleton-toc-depth-4 .skeleton-toc-link {
-  @apply pl-6;
-}
-
-.skeleton-toc-depth-5 .skeleton-toc-link {
-  @apply pl-8;
-}
-
-.skeleton-toc-depth-6 .skeleton-toc-link {
-  @apply pl-10;
+.skeleton-toc-marker {
+  @apply mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-gray-300 transition-all duration-150;
+  @apply dark:bg-gray-600;
 }
 
 .skeleton-toc-text {
-  @apply truncate block;
+  @apply break-words text-left;
 }
 
-/* Responsive behavior */
-@media (max-width: 1024px) {
+.skeleton-toc-item-active .skeleton-toc-link {
+  @apply text-primary-600 dark:text-primary-400 font-medium;
+}
+
+.skeleton-toc-item-active .skeleton-toc-marker {
+  @apply h-2 w-2 bg-primary-500 dark:bg-primary-400;
+}
+
+.skeleton-toc-depth-1 .skeleton-toc-link,
+.skeleton-toc-depth-2 .skeleton-toc-link {
+  @apply pl-0;
+}
+
+.skeleton-toc-depth-3 .skeleton-toc-link {
+  @apply pl-2;
+}
+
+.skeleton-toc-depth-4 .skeleton-toc-link {
+  @apply pl-4;
+}
+
+.skeleton-toc-depth-5 .skeleton-toc-link {
+  @apply pl-6;
+}
+
+.skeleton-toc-depth-6 .skeleton-toc-link {
+  @apply pl-8;
+}
+
+@media (max-width: 1279px) {
   .skeleton-toc {
     @apply hidden;
   }
 }
 
-/* Ensure TOC doesn't interfere with content on smaller screens */
-@media (max-width: 1280px) {
-  .skeleton-toc-expanded {
-    @apply w-56;
-  }
-  
-  .skeleton-toc-skeleton {
-    @apply w-40 min-w-40;
-  }
-}
-
-/* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
-  .skeleton-toc-line {
-    @apply animate-none;
-  }
-  
-  .skeleton-toc-more {
-    @apply animate-none;
-  }
-  
-  .skeleton-toc-expanded {
-    @apply animate-none;
-  }
-  
-  .skeleton-toc,
-  .skeleton-toc-container,
-  .skeleton-toc-skeleton,
-  .skeleton-toc-item,
-  .skeleton-toc-link {
+  .skeleton-toc-link,
+  .skeleton-toc-marker {
     transition: none !important;
-    animation: none !important;
   }
 }
 
-/* Print styles */
 @media print {
   .skeleton-toc {
     @apply hidden;
   }
 }
 
-/* Custom scrollbar for webkit browsers */
+/* Scrollbar styling */
 .skeleton-toc-list::-webkit-scrollbar {
-  @apply w-1;
+  @apply w-1.5;
 }
 
 .skeleton-toc-list::-webkit-scrollbar-track {
@@ -207,7 +107,7 @@
 }
 
 .skeleton-toc-list::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+  @apply rounded-full bg-gray-300 dark:bg-gray-600;
 }
 
 .skeleton-toc-list::-webkit-scrollbar-thumb:hover {

@@ -1,101 +1,67 @@
 'use client'
 
-import React, { useState, useEffect, useMemo, useCallback, memo } from 'react'
+import React, { useMemo, useCallback, memo } from 'react'
 import { TableOfContentsProps } from '@/types/toc'
 import { useScrollSpy } from '@/lib/hooks/useScrollSpy'
 import { smoothScrollToElement, calculateScrollOffset } from '@/lib/utils/smoothScroll'
 
 const SkeletonTOC: React.FC<TableOfContentsProps> = memo(
   ({ toc, className = '', minHeadings = 3, maxDepth = 6 }) => {
-    const [isHovered, setIsHovered] = useState(false)
-
-    // Memoize filtered TOC to prevent unnecessary recalculations
     const filteredToc = useMemo(() => {
       if (!toc || toc.length < minHeadings) {
         return []
       }
       return toc.filter((item) => item.depth <= maxDepth)
     }, [toc, minHeadings, maxDepth])
-    // Extract heading IDs for scroll spy
+
     const headingIds = useMemo(
       () => filteredToc.map((item) => item.url.replace('#', '')),
       [filteredToc]
     )
 
-    // Use scroll spy to track active section
     const { activeId } = useScrollSpy({ headingIds })
 
-    // Handle TOC item click with smooth scrolling
     const handleItemClick = useCallback((id: string) => {
       const offset = calculateScrollOffset()
       smoothScrollToElement(id, offset)
     }, [])
 
-    // Don't render if we don't have enough headings
     if (filteredToc.length === 0) {
       return null
     }
 
     return (
-      <nav
-        className={`skeleton-toc ${className}`}
-        aria-label="Table of contents"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        <div className="skeleton-toc-container">
-          {isHovered ? (
-            <div className="skeleton-toc-expanded">
-              <h3 className="skeleton-toc-title">Contents</h3>
-              <ul className="skeleton-toc-list">
-                {filteredToc.map((item, index) => {
-                  const id = item.url.replace('#', '')
-                  const isActive = activeId === id
-
-                  return (
-                    <li
-                      key={`${item.url}-${index}`}
-                      className={`skeleton-toc-item skeleton-toc-depth-${item.depth} ${isActive ? 'skeleton-toc-item-active' : ''
-                        }`}
-                    >
-                      <a
-                        href={item.url}
-                        onClick={(e) => {
-                          e.preventDefault()
-                          handleItemClick(id)
-                        }}
-                        className={`skeleton-toc-link ${isActive ? 'skeleton-toc-link-active' : ''
-                          }`}
-                        aria-current={isActive ? 'location' : undefined}
-                      >
-                        <span className="skeleton-toc-text">{item.value}</span>
-                      </a>
-                    </li>
-                  )
-                })}
-              </ul>
-            </div>
-          ) : (
-            // Skeleton state - show more lines to match actual TOC size
-            <div className="skeleton-toc-skeleton">
-              <div className="skeleton-toc-lines">
-                {filteredToc.slice(0, Math.min(8, filteredToc.length)).map((item, index) => (
-                  <div
-                    key={`skeleton-${index}`}
-                    className={`skeleton-toc-line skeleton-toc-line-depth-${item.depth}`}
-                    style={{
-                      width: `${Math.max(50, Math.min(95, 60 + item.value.length * 0.5))}%`,
-                      animationDelay: `${index * 0.05}s`,
-                    }}
-                  />
-                ))}
-                {filteredToc.length > 8 && (
-                  <div className="skeleton-toc-more">+{filteredToc.length - 8} more</div>
-                )}
-              </div>
-            </div>
-          )}
+      <nav className={`skeleton-toc ${className}`} aria-label="Table of contents">
+        <div className="skeleton-toc-header">
+          <span className="skeleton-toc-title">目录</span>
         </div>
+        <ul className="skeleton-toc-list">
+          {filteredToc.map((item, index) => {
+            const id = item.url.replace('#', '')
+            const isActive = activeId === id
+
+            return (
+              <li
+                key={`${item.url}-${index}`}
+                className={`skeleton-toc-item skeleton-toc-depth-${item.depth} ${isActive ? 'skeleton-toc-item-active' : ''
+                  }`}
+              >
+                <a
+                  href={item.url}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    handleItemClick(id)
+                  }}
+                  className={`skeleton-toc-link ${isActive ? 'skeleton-toc-link-active' : ''}`}
+                  aria-current={isActive ? 'location' : undefined}
+                >
+                  <span className="skeleton-toc-marker" aria-hidden="true" />
+                  <span className="skeleton-toc-text">{item.value}</span>
+                </a>
+              </li>
+            )
+          })}
+        </ul>
       </nav>
     )
   }

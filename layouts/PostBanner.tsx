@@ -39,6 +39,8 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
     setToc(extractedTOC)
   }, [children])
 
+  const showToc = tocEnabled && shouldShowTOC(toc, tocConfig.minHeadings)
+
   return (
     <SectionContainer>
       <ScrollTopAndComment />
@@ -64,12 +66,19 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
 
 
 
-          <div className="prose dark:prose-invert max-w-none py-4 relative">
-            {/* Skeleton TOC - positioned in article top-right */}
-            {tocEnabled && shouldShowTOC(toc, tocConfig.minHeadings) && (
-              <SkeletonTOC toc={toc} minHeadings={tocConfig.minHeadings} maxDepth={tocConfig.maxDepth} />
-            )}
-            {children}
+          <div className="py-4">
+            <div className="relative xl:flex xl:items-start xl:gap-10">
+              {showToc && (
+                <aside className="hidden xl:flex xl:w-64 xl:flex-none">
+                  <SkeletonTOC
+                    toc={toc}
+                    minHeadings={tocConfig.minHeadings}
+                    maxDepth={tocConfig.maxDepth}
+                  />
+                </aside>
+              )}
+              <div className="prose dark:prose-invert max-w-none flex-1">{children}</div>
+            </div>
           </div>
           {siteMetadata.comments && (
             <div className="pt-6 pb-6 text-center text-gray-700 dark:text-gray-300" id="comment">
