@@ -219,18 +219,19 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
               </div>
               {showToc && (
                 <div className="pt-8 xl:min-h-screen">
-                  <div
-                    style={{ position: 'sticky', top: '20px' }}
-                    className={`max-h-[calc(100vh-4rem)] transition-all duration-300 ease-in-out ${tocState.shouldShowTOC ? 'translate-y-0 opacity-100' : 'pointer-events-none -translate-y-4 opacity-0'}`}
-                    role="navigation"
-                    aria-label="Table of contents"
-                    aria-hidden={!tocState.shouldShowTOC}
-                  >
-                    <SkeletonTOC
-                      toc={toc}
-                      minHeadings={tocConfig.minHeadings}
-                      maxDepth={tocConfig.maxDepth}
-                    />
+                  <div className="sticky top-5">
+                    <div
+                      className={`max-h-[calc(100vh-4rem)] transition-all duration-300 ease-in-out ${tocState.shouldShowTOC ? 'translate-y-0 opacity-100' : 'pointer-events-none -translate-y-4 opacity-0'}`}
+                      role="navigation"
+                      aria-label="Table of contents"
+                      aria-hidden={!tocState.shouldShowTOC}
+                    >
+                      <SkeletonTOC
+                        toc={toc}
+                        minHeadings={tocConfig.minHeadings}
+                        maxDepth={tocConfig.maxDepth}
+                      />
+                    </div>
                   </div>
                 </div>
               )}
