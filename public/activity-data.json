@@ -1,0 +1,332 @@
+[
+  {
+    "date": "2023-10-01",
+    "count": 1,
+    "posts": [
+      {
+        "title": "日常随笔",
+        "slug": "archive/diary/_index"
+      }
+    ]
+  },
+  {
+    "date": "2023-10-14",
+    "count": 1,
+    "posts": [
+      {
+        "title": "写点什么的冲动",
+        "slug": "archive/diary/2023/2023-10-14-first-diary"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-05",
+    "count": 2,
+    "posts": [
+      {
+        "title": "用 Husky + Prettier 把关提交质量",
+        "slug": "cs/frontend/frontend-tool"
+      },
+      {
+        "title": "搞懂 npm、npx 与 package.json",
+        "slug": "cs/frontend/npm-npx-package-json"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-06",
+    "count": 1,
+    "posts": [
+      {
+        "title": "午后旷野的旅伴",
+        "slug": "archive/diary/2023/2023-11-1-friends"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-07",
+    "count": 1,
+    "posts": [
+      {
+        "title": "高级 CSS 学习笔记（一）",
+        "slug": "archive/learn-notes/advanced-css-study-notes/section-I"
+      }
+    ]
+  },
+  {
+    "date": "2023-11-08",
+    "count": 1,
+    "posts": [
+      {
+        "title": "高级 CSS 学习笔记（二）",
+        "slug": "archive/learn-notes/advanced-css-study-notes/section-II"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-15",
+    "count": 1,
+    "posts": [
+      {
+        "title": "Git 手册：命令与实践",
+        "slug": "archive/learn-notes/git-handbook"
+      }
+    ]
+  },
+  {
+    "date": "2023-12-16",
+    "count": 7,
+    "posts": [
+      {
+        "title": "学术期刊等级与类型速览",
+        "slug": "archive/learn-notes/academic-journal-levels"
+      },
+      {
+        "title": "CUDA、Toolkit 与 cuDNN 关系梳理",
+        "slug": "archive/learn-notes/cuda-more"
+      },
+      {
+        "title": "显示器常见指标速查表",
+        "slug": "archive/learn-notes/display-metrics-cheatsheet"
+      },
+      {
+        "title": "目标检测评估指标 mAP 详解",
+        "slug": "archive/learn-notes/mAP"
+      },
+      {
+        "title": "动态模糊与高刷新率的意义",
+        "slug": "archive/learn-notes/motion-blur-and-high-refresh-rate"
+      },
+      {
+        "title": "GMT、UTC 与时区概念整理",
+        "slug": "archive/learn-notes/time-zone"
+      },
+      {
+        "title": "ROS 与 Ubuntu 的关系笔记",
+        "slug": "cs/other/ros-ubuntu"
+      }
+    ]
+  },
+  {
+    "date": "2024-03-23",
+    "count": 1,
+    "posts": [
+      {
+        "title": "向好文档学习",
+        "slug": "archive/diary/2024/2024-03-23-read-docs-notes"
+      }
+    ]
+  },
+  {
+    "date": "2024-03-25",
+    "count": 1,
+    "posts": [
+      {
+        "title": "雨夜里的调试耐心",
+        "slug": "archive/diary/2024/2024-03-23-keep-going"
+      }
+    ]
+  },
+  {
+    "date": "2024-04-03",
+    "count": 1,
+    "posts": [
+      {
+        "title": "练习编程：一次密码重置调试",
+        "slug": "archive/diary/2024/2024-04-03-almost_there"
+      }
+    ]
+  },
+  {
+    "date": "2024-04-21",
+    "count": 1,
+    "posts": [
+      {
+        "title": "读好书的欢喜时刻",
+        "slug": "archive/diary/2024/2024-04-21-read_a_good_book"
+      }
+    ]
+  },
+  {
+    "date": "2024-05-26",
+    "count": 2,
+    "posts": [
+      {
+        "title": "Spring Boot 复习手册",
+        "slug": "archive/learn-notes/spring-boot-notes"
+      },
+      {
+        "title": "HTTPS 抓包工具入门",
+        "slug": "cs/other/packet-capture-tools"
+      }
+    ]
+  },
+  {
+    "date": "2024-05-27",
+    "count": 1,
+    "posts": [
+      {
+        "title": "为 Angular 项目落地代码规范工具链",
+        "slug": "cs/frontend/code-style-of-frontend"
+      }
+    ]
+  },
+  {
+    "date": "2024-05-28",
+    "count": 8,
+    "posts": [
+      {
+        "title": "字符编码与字体速查笔记",
+        "slug": "archive/learn-notes/character-encoding-and-fonts"
+      },
+      {
+        "title": "OAuth 2.0 核心流程笔记",
+        "slug": "archive/learn-notes/oauth"
+      },
+      {
+        "title": "Spring Security 与 JWT 实战笔记",
+        "slug": "archive/learn-notes/spring-security-jwt"
+      },
+      {
+        "title": "Spring Securoty 学习",
+        "slug": "archive/learn-notes/spring-securoty-jwt"
+      },
+      {
+        "title": "Gradle Version Catalog 快速上手",
+        "slug": "cs/backend/gradle-catalog"
+      },
+      {
+        "title": "Jenkins CI/CD 拆解笔记",
+        "slug": "cs/cicd/cicd-jenkins-tool"
+      },
+      {
+        "title": "Angular 生命周期钩子速查",
+        "slug": "cs/frontend/angular-lifecycle"
+      },
+      {
+        "title": "Elastic APM 前端监控实践笔记",
+        "slug": "cs/frontend/rum"
+      }
+    ]
+  },
+  {
+    "date": "2024-06-01",
+    "count": 1,
+    "posts": [
+      {
+        "title": "优质网站备忘录",
+        "slug": "archive/diary/website-collection"
+      }
+    ]
+  },
+  {
+    "date": "2024-06-19",
+    "count": 1,
+    "posts": [
+      {
+        "title": "2024年第25周周记",
+        "slug": "archive/diary/2024-06-20"
+      }
+    ]
+  },
+  {
+    "date": "2024-06-20",
+    "count": 1,
+    "posts": [
+      {
+        "title": "从 Docker 到 OpenShift 的容器化笔记",
+        "slug": "cs/cicd/k8s-notes"
+      }
+    ]
+  },
+  {
+    "date": "2025-09-26",
+    "count": 1,
+    "posts": [
+      {
+        "title": "Human-in-the-Loop（HITL）实战指南",
+        "slug": "cs/llm/human-in-the-loop-article"
+      }
+    ]
+  },
+  {
+    "date": "2025-09-27",
+    "count": 1,
+    "posts": [
+      {
+        "title": "像管理团队一样管理 AI",
+        "slug": "cs/llm/ai-dev-workflow-like-a-boss"
+      }
+    ]
+  },
+  {
+    "date": "2025-09-28",
+    "count": 1,
+    "posts": [
+      {
+        "title": "像带团队一样用大模型",
+        "slug": "archive/diary/2025/2025-09-28-llm-mind"
+      }
+    ]
+  },
+  {
+    "date": "2025-10-09",
+    "count": 1,
+    "posts": [
+      {
+        "title": "Prompt 工程：与 AI 对话的艺术 🎯",
+        "slug": "cs/llm/prompt-a-prompt"
+      }
+    ]
+  },
+  {
+    "date": "2025-10-10",
+    "count": 1,
+    "posts": [
+      {
+        "title": "如何快速上手一个新项目：从全局到细节的实践方法",
+        "slug": "cs/other/onboarding-to-new-project"
+      }
+    ]
+  },
+  {
+    "date": "2025-10-11",
+    "count": 2,
+    "posts": [
+      {
+        "title": "周记：开发方法论与AI时代的思考",
+        "slug": "diary/2025-10-11-weekly"
+      },
+      {
+        "title": "Learn About - Web设计演进：从拟物化到液态玻璃风格",
+        "slug": "cs/web/web-dev-design"
+      }
+    ]
+  },
+  {
+    "date": "2025-10-12",
+    "count": 5,
+    "posts": [
+      {
+        "title": "学习方式的变革：从搜索引擎到 AI 对话",
+        "slug": "diary/learn-about"
+      },
+      {
+        "title": "PostgreSQL Schema：数据库中的文件夹",
+        "slug": "cs/db/postgre-sql-schema"
+      },
+      {
+        "title": "从零开始搭建现代化博客：Next.js + Vercel 完整指南",
+        "slug": "cs/other/blog-build-from-scratch"
+      },
+      {
+        "title": "Web3 入门：概念、工具与实践",
+        "slug": "cs/web/learn-about-web3"
+      },
+      {
+        "title": "AI时代的现代Web开发工具链：从需求到上线的完整指南",
+        "slug": "cs/web/modern-web-dev-tool"
+      }
+    ]
+  }
+]

@@ -25,6 +25,7 @@ import rehypePresetMinify from 'rehype-preset-minify'
 import siteMetadata from './data/siteMetadata'
 import { allCoreContent, MDXDocumentDate, sortPosts } from 'pliny/utils/contentlayer.js'
 import { filterRegularPosts, filterRegularBlogPosts, isCategoryIndexPost } from './lib/blog'
+import { generateVisualizationData } from './lib/visualizations/buildTimeGeneration'
 import prettier from 'prettier'
 
 const root = process.cwd()
@@ -195,5 +196,12 @@ export default makeSource({
     const { allBlogs } = await importData()
     createTagCount(allBlogs)
     createSearchIndex(allBlogs)
+
+    // Generate visualization data
+    try {
+      await generateVisualizationData(allBlogs)
+    } catch (error) {
+      console.warn('Failed to generate visualization data:', error)
+    }
   },
 })
