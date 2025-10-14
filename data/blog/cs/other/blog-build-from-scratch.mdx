@@ -584,6 +584,22 @@ analytics: {
 3. 在 Vercel 添加环境变量
 4. 在 `data/siteMetadata.js` 中配置
 
+## 内容呈现与素材管理
+
+内容写完只是第一步，让页面好看才算把事情做完整。这一块我通常分成三个层次来处理。
+
+### 第一层：代码和截图要干净
+
+代码块不必只靠默认主题。像 [Carbon](https://carbon.now.sh/) 和 [Ray.so](https://ray.so/) 这种在线工具，可以把关键代码转成高分辨率图片，分享到社交平台时更醒目。截图同理，写文章前先把截图整理干净，Mac 上的 CleanShot X、Shottr，Windows 用 Flameshot，都能自动加阴影、边框，还能一键模糊敏感信息。
+
+### 第二层：图形和插画有节制
+
+结构复杂的文章我会画一张图，帮助读者一次性理解。流程图、状态图用 [Mermaid](https://mermaid.js.org/)，直接写在 MDX 里即可渲染；需要草图式手绘感时，选 [Excalidraw](https://excalidraw.com/) 或 [tldraw](https://www.tldraw.com/)，导出 SVG 放进文章。要封面或者引导图，最近试用 [Recraft](https://www.recraft.ai/) 这类生成式工具，提示词控制好，就能快速产出一套风格统一的视觉素材。
+
+### 第三层：图片存储不能随意
+
+图片量小的时候，直接放在 `public/static/images` 最省心，Next.js 自带的 `next/image` 帮你做优化。但篇幅一多，仓库会暴涨。这时候我会迁移到对象存储或图床，例如 Cloudflare R2、Supabase Storage、阿里云 OSS，配合自定义域名走 CDN。国内访问要求高，可以接入七牛云或又拍云；海外读者多，用 Vercel 自带的 Edge Network 就够。无论选哪个，记得把原图和压缩图分开归档，Markdown 里引用 CDN 链接，仓库里只留必要的缩略图，构建和部署速度都会轻松不少。
+
 ## 性能优化
 
 ### 1. 图片优化

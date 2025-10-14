@@ -106,6 +106,41 @@ const siteMetadata = {
     sticky: true, // Make TOC sticky when in sidebar or floating position
     showToggle: false, // Show toggle button (auto-enabled on mobile)
   },
+  visualizations: {
+    // Activity heatmap configuration
+    heatmap: {
+      enabled: true, // Enable activity heatmap
+      weeksToShow: 52, // Number of weeks to display (1 year)
+      colorScheme: 'github', // 'github' or 'custom'
+      showTooltips: true, // Show tooltips on hover
+      // customColors: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'], // Custom colors (optional)
+    },
+    // Tag treemap configuration
+    treemap: {
+      enabled: true, // Enable tag treemap
+      hierarchical: true, // Use hierarchical tag organization
+      colorScheme: 'category', // 'category', 'frequency', or 'custom'
+      enableZoom: true, // Allow zooming into categories
+      linkToTagPages: true, // Link tags to their respective pages
+      // Tag hierarchy (optional) - organize tags into categories
+      tagHierarchy: {
+        'Technology': ['react', 'vue', 'angular', 'javascript', 'typescript', 'node', 'python', 'java', 'go', 'rust'],
+        'Computer Science': ['algorithm', 'data-structure', 'system-design', 'computer-science', 'math', 'statistics'],
+        'Web Development': ['frontend', 'backend', 'fullstack', 'web', 'mobile', 'responsive', 'ui', 'ux', 'design'],
+        'Learning': ['tutorial', 'guide', 'howto', 'tips', 'tricks', 'best-practices', 'learn-notes'],
+        'Personal': ['weekly', 'diary', 'reflection', 'thoughts', 'life']
+      }
+    },
+    // External integrations (optional)
+    external: {
+      // GitHub integration for commit activity (optional)
+      // github: {
+      //   enabled: false, // Enable GitHub integration
+      //   username: 'your-github-username', // Your GitHub username
+      //   includePrivate: false, // Include private repository activity
+      // }
+    }
+  },
 }
 
 module.exports = siteMetadata
