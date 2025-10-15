@@ -101,20 +101,35 @@ export function ActivityHeatmap({ data, config, className = '' }: ActivityHeatma
                         color: {
                             type: 'threshold',
                             range: colors,
-                            domain: [1, 2, 4, 8]
+                            domain: [1, 2, 4, 8],
+                            scheme: 'BuGn'
                         }
                     },
                     domain: {
                         type: 'month',
                         gutter: 4,
-                        label: { text: 'MMM', textAlign: 'start', position: 'top' }
+                        label: {
+                            text: 'MMM',
+                            textAlign: 'start',
+                            position: 'top',
+                            style: {
+                                fontSize: '12px',
+                                fill: isDark ? '#9ca3af' : '#6b7280'
+                            }
+                        }
                     },
                     subDomain: {
                         type: 'ghDay',
                         radius: responsiveConfig.cellRadius,
                         width: responsiveConfig.cellSize,
                         height: responsiveConfig.cellSize,
-                        gutter: responsiveConfig.cellGutter
+                        gutter: responsiveConfig.cellGutter,
+                        label: {
+                            style: {
+                                fontSize: '10px',
+                                fill: isDark ? '#9ca3af' : '#6b7280'
+                            }
+                        }
                     },
                     itemSelector: containerRef.current,
                     theme: isDark ? 'dark' : 'light'
@@ -149,6 +164,18 @@ export function ActivityHeatmap({ data, config, className = '' }: ActivityHeatma
                                 }
 
                                 return tooltip
+                            },
+                            style: {
+                                backgroundColor: isDark ? 'rgba(255, 255, 255, 0.95)' : 'rgba(0, 0, 0, 0.9)',
+                                color: isDark ? '#1f2937' : 'white',
+                                borderRadius: '6px',
+                                padding: '8px 12px',
+                                fontSize: '12px',
+                                lineHeight: '1.4',
+                                whiteSpace: 'pre-line',
+                                zIndex: 1000,
+                                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+                                border: isDark ? '1px solid rgba(0, 0, 0, 0.1)' : '1px solid rgba(255, 255, 255, 0.1)'
                             }
                         }
                     ],
@@ -157,7 +184,11 @@ export function ActivityHeatmap({ data, config, className = '' }: ActivityHeatma
                         {
                             anchor: 'bottom',
                             width: 200,
-                            itemSelector: '#heatmap-legend'
+                            itemSelector: '#heatmap-legend',
+                            style: {
+                                fontSize: '11px',
+                                fill: isDark ? '#9ca3af' : '#6b7280'
+                            }
                         }
                     ],
                     [
@@ -166,7 +197,11 @@ export function ActivityHeatmap({ data, config, className = '' }: ActivityHeatma
                             width: 30,
                             textAlign: 'start',
                             text: () => ['Sun', '', 'Tue', '', 'Thu', '', 'Sat'],
-                            padding: [25, 0, 0, 0]
+                            padding: [25, 0, 0, 0],
+                            style: {
+                                fontSize: '10px',
+                                fill: isDark ? '#9ca3af' : '#6b7280'
+                            }
                         }
                     ]
                 ])
@@ -243,7 +278,13 @@ export function ActivityHeatmap({ data, config, className = '' }: ActivityHeatma
                 <div
                     ref={containerRef}
                     className="min-h-[120px] overflow-x-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 md:overflow-x-visible"
-                    style={{ display: isLoading ? 'none' : 'block' }}
+                    style={{
+                        display: isLoading ? 'none' : 'block',
+                        // Ensure proper styling for cal-heatmap
+                        '--ch-namespace': 'ch',
+                        '--ch-subdomain-bg-color': theme === 'dark' ? '#0d1117' : '#ebedf0',
+                        '--ch-subdomain-text-color': theme === 'dark' ? '#f0f6fc' : '#24292f'
+                    } as React.CSSProperties}
                 />
 
                 {!isLoading && (
@@ -278,10 +319,10 @@ function getColorScheme(
         return customColors
     }
 
-    // GitHub-style colors
+    // GitHub-style colors with better contrast
     if (isDark) {
         return [
-            '#161b22', // No activity (dark background)
+            '#0d1117', // No activity (dark background)
             '#0e4429', // Low activity
             '#006d32', // Medium-low activity  
             '#26a641', // Medium-high activity

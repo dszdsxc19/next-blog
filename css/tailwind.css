@@ -8,6 +8,9 @@
 @import './toc.css';
 @import './skeleton-toc.css';
 
+/* Import cal-heatmap styles */
+@import './cal-heatmap.css';
+
 /* Core theme configuration */
 @theme {
   /* Font families */

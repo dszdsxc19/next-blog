@@ -1,12 +1,12 @@
 {
   "activityStats": {
-    "totalDays": 25,
-    "totalPosts": 45,
-    "activeDays": 25,
+    "totalDays": 26,
+    "totalPosts": 48,
+    "activeDays": 26,
     "maxPostsInDay": 8,
     "dateRange": {
       "start": "2023-10-01",
-      "end": "2025-10-12"
+      "end": "2025-10-13"
     }
   },
   "tagStats": {
@@ -14,7 +14,7 @@
     "totalCategories": 3,
     "mostUsedTag": {
       "name": "Other",
-      "count": 119,
+      "count": 129,
       "children": [
         {
           "name": "weekly",
@@ -54,9 +54,9 @@
         },
         {
           "name": "AI",
-          "count": 3,
+          "count": 4,
           "category": "Other",
-          "color": "hsl(288, 48%, 63%)"
+          "color": "hsl(288, 49%, 64%)"
         },
         {
           "name": "思考",
@@ -390,15 +390,33 @@
         },
         {
           "name": "DNS",
-          "count": 1,
+          "count": 2,
           "category": "Other",
-          "color": "hsl(169, 46%, 61%)"
+          "color": "hsl(169, 47%, 62%)"
         },
         {
           "name": "教程",
           "count": 1,
           "category": "Other",
           "color": "hsl(338, 46%, 61%)"
+        },
+        {
+          "name": "前端",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(250, 46%, 61%)"
+        },
+        {
+          "name": "Debug",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(307, 46%, 61%)"
+        },
+        {
+          "name": "性能优化",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(4, 46%, 61%)"
         },
         {
           "name": "项目管理",
@@ -447,6 +465,18 @@
           "count": 1,
           "category": "Other",
           "color": "hsl(339, 46%, 61%)"
+        },
+        {
+          "name": "Network",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(70, 46%, 61%)"
+        },
+        {
+          "name": "Domain",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(60, 46%, 61%)"
         },
         {
           "name": "web3",
@@ -515,6 +545,24 @@
           "color": "hsl(108, 47%, 62%)"
         },
         {
+          "name": "Product",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(255, 46%, 61%)"
+        },
+        {
+          "name": "Career",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(54, 46%, 61%)"
+        },
+        {
+          "name": "Security",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(88, 46%, 61%)"
+        },
+        {
           "name": "web-design",
           "count": 1,
           "category": "Other",
@@ -545,32 +593,32 @@
           "color": "hsl(298, 46%, 61%)"
         },
         {
-          "name": "调试日志",
-          "count": 2,
-          "category": "Other",
-          "color": "hsl(100, 47%, 62%)"
-        },
-        {
           "name": "阅读记忆",
           "count": 2,
           "category": "Other",
           "color": "hsl(148, 47%, 62%)"
         },
         {
-          "name": "CSS 笔记",
+          "name": "调试日志",
           "count": 2,
           "category": "Other",
-          "color": "hsl(153, 47%, 62%)"
+          "color": "hsl(100, 47%, 62%)"
         },
         {
           "name": "AI 思考",
           "count": 1,
           "category": "Other",
           "color": "hsl(6, 46%, 61%)"
+        },
+        {
+          "name": "CSS 笔记",
+          "count": 2,
+          "category": "Other",
+          "color": "hsl(153, 47%, 62%)"
         }
       ],
       "color": "hsl(184, 46%, 61%)"
     }
   },
-  "generatedAt": "2025-10-13T15:52:18.717Z"
+  "generatedAt": "2025-10-15T15:35:22.809Z"
 }

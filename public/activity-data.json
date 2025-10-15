@@ -305,7 +305,7 @@
   },
   {
     "date": "2025-10-12",
-    "count": 5,
+    "count": 6,
     "posts": [
       {
         "title": "学习方式的变革：从搜索引擎到 AI 对话",
@@ -320,12 +320,30 @@
         "slug": "cs/other/blog-build-from-scratch"
       },
       {
+        "title": "域名解析的完整链条：从购买域名到访问网站",
+        "slug": "cs/web/DNS-resolution"
+      },
+      {
         "title": "Web3 入门：概念、工具与实践",
         "slug": "cs/web/learn-about-web3"
       },
       {
         "title": "AI时代的现代Web开发工具链：从需求到上线的完整指南",
         "slug": "cs/web/modern-web-dev-tool"
+      }
+    ]
+  },
+  {
+    "date": "2025-10-13",
+    "count": 2,
+    "posts": [
+      {
+        "title": "前端调试手记：Stylus 栈溢出",
+        "slug": "cs/other/frontend-debug"
+      },
+      {
+        "title": "产品感，比技术更关键",
+        "slug": "cs/web/product-mindset-greater-than-tech-skill"
       }
     ]
   }

@@ -1,7 +1,7 @@
 [
   {
     "name": "Other",
-    "count": 119,
+    "count": 129,
     "children": [
       {
         "name": "weekly",
@@ -41,9 +41,9 @@
       },
       {
         "name": "AI",
-        "count": 3,
+        "count": 4,
         "category": "Other",
-        "color": "hsl(288, 48%, 63%)"
+        "color": "hsl(288, 49%, 64%)"
       },
       {
         "name": "思考",
@@ -377,15 +377,33 @@
       },
       {
         "name": "DNS",
-        "count": 1,
+        "count": 2,
         "category": "Other",
-        "color": "hsl(169, 46%, 61%)"
+        "color": "hsl(169, 47%, 62%)"
       },
       {
         "name": "教程",
         "count": 1,
         "category": "Other",
         "color": "hsl(338, 46%, 61%)"
+      },
+      {
+        "name": "前端",
+        "count": 1,
+        "category": "Other",
+        "color": "hsl(250, 46%, 61%)"
+      },
+      {
+        "name": "Debug",
+        "count": 1,
+        "category": "Other",
+        "color": "hsl(307, 46%, 61%)"
+      },
+      {
+        "name": "性能优化",
+        "count": 1,
+        "category": "Other",
+        "color": "hsl(4, 46%, 61%)"
       },
       {
         "name": "项目管理",
@@ -434,6 +452,18 @@
         "count": 1,
         "category": "Other",
         "color": "hsl(339, 46%, 61%)"
+      },
+      {
+        "name": "Network",
+        "count": 1,
+        "category": "Other",
+        "color": "hsl(70, 46%, 61%)"
+      },
+      {
+        "name": "Domain",
+        "count": 1,
+        "category": "Other",
+        "color": "hsl(60, 46%, 61%)"
       },
       {
         "name": "web3",
@@ -502,6 +532,24 @@
         "color": "hsl(108, 47%, 62%)"
       },
       {
+        "name": "Product",
+        "count": 1,
+        "category": "Other",
+        "color": "hsl(255, 46%, 61%)"
+      },
+      {
+        "name": "Career",
+        "count": 1,
+        "category": "Other",
+        "color": "hsl(54, 46%, 61%)"
+      },
+      {
+        "name": "Security",
+        "count": 1,
+        "category": "Other",
+        "color": "hsl(88, 46%, 61%)"
+      },
+      {
         "name": "web-design",
         "count": 1,
         "category": "Other",
@@ -532,31 +580,50 @@
         "color": "hsl(298, 46%, 61%)"
       },
       {
-        "name": "调试日志",
-        "count": 2,
-        "category": "Other",
-        "color": "hsl(100, 47%, 62%)"
-      },
-      {
         "name": "阅读记忆",
         "count": 2,
         "category": "Other",
         "color": "hsl(148, 47%, 62%)"
       },
       {
-        "name": "CSS 笔记",
+        "name": "调试日志",
         "count": 2,
         "category": "Other",
-        "color": "hsl(153, 47%, 62%)"
+        "color": "hsl(100, 47%, 62%)"
       },
       {
         "name": "AI 思考",
         "count": 1,
         "category": "Other",
         "color": "hsl(6, 46%, 61%)"
+      },
+      {
+        "name": "CSS 笔记",
+        "count": 2,
+        "category": "Other",
+        "color": "hsl(153, 47%, 62%)"
       }
     ],
     "color": "hsl(184, 46%, 61%)"
+  },
+  {
+    "name": "Web Development",
+    "count": 2,
+    "children": [
+      {
+        "name": "Web",
+        "count": 1,
+        "category": "Web Development",
+        "color": "hsl(76, 46%, 61%)"
+      },
+      {
+        "name": "frontend",
+        "count": 1,
+        "category": "Web Development",
+        "color": "hsl(294, 46%, 61%)"
+      }
+    ],
+    "color": "#10b981"
   },
   {
     "name": "Technology",
@@ -570,18 +637,5 @@
       }
     ],
     "color": "#3b82f6"
-  },
-  {
-    "name": "Web Development",
-    "count": 1,
-    "children": [
-      {
-        "name": "frontend",
-        "count": 1,
-        "category": "Web Development",
-        "color": "hsl(294, 46%, 61%)"
-      }
-    ],
-    "color": "#10b981"
   }
 ]
