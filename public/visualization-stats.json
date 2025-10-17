@@ -1,12 +1,12 @@
 {
   "activityStats": {
     "totalDays": 28,
-    "totalPosts": 50,
+    "totalPosts": 53,
     "activeDays": 28,
     "maxPostsInDay": 8,
     "dateRange": {
       "start": "2023-10-01",
-      "end": "2025-10-15"
+      "end": "2025-10-17"
     }
   },
   "tagStats": {
@@ -14,7 +14,7 @@
     "totalCategories": 3,
     "mostUsedTag": {
       "name": "Other",
-      "count": 141,
+      "count": 153,
       "children": [
         {
           "name": "weekly",
@@ -174,9 +174,9 @@
         },
         {
           "name": "Spring Boot",
-          "count": 2,
+          "count": 3,
           "category": "Other",
-          "color": "hsl(293, 47%, 62%)"
+          "color": "hsl(293, 48%, 63%)"
         },
         {
           "name": "Java 工程化",
@@ -288,9 +288,9 @@
         },
         {
           "name": "PostgreSQL",
-          "count": 1,
+          "count": 2,
           "category": "Other",
-          "color": "hsl(100, 46%, 61%)"
+          "color": "hsl(100, 47%, 62%)"
         },
         {
           "name": "数据库",
@@ -347,100 +347,40 @@
           "color": "hsl(7, 46%, 61%)"
         },
         {
-          "name": "AI 工作流",
+          "name": "日志",
           "count": 1,
           "category": "Other",
-          "color": "hsl(162, 46%, 61%)"
+          "color": "hsl(130, 46%, 61%)"
         },
         {
-          "name": "工程实践",
+          "name": "可观测性",
           "count": 2,
           "category": "Other",
-          "color": "hsl(205, 47%, 62%)"
+          "color": "hsl(87, 47%, 62%)"
         },
         {
-          "name": "机器学习",
+          "name": "系统设计",
           "count": 1,
           "category": "Other",
-          "color": "hsl(208, 46%, 61%)"
+          "color": "hsl(303, 46%, 61%)"
         },
         {
-          "name": "HITL",
-          "count": 1,
+          "name": "Next.js",
+          "count": 3,
           "category": "Other",
-          "color": "hsl(185, 46%, 61%)"
+          "color": "hsl(36, 48%, 63%)"
         },
         {
-          "name": "RAG",
+          "name": "系统思考",
           "count": 1,
           "category": "Other",
-          "color": "hsl(248, 46%, 61%)"
-        },
-        {
-          "name": "内容审核",
-          "count": 1,
-          "category": "Other",
-          "color": "hsl(347, 46%, 61%)"
-        },
-        {
-          "name": "Agent",
-          "count": 1,
-          "category": "Other",
-          "color": "hsl(285, 46%, 61%)"
-        },
-        {
-          "name": "人工智能",
-          "count": 1,
-          "category": "Other",
-          "color": "hsl(246, 46%, 61%)"
-        },
-        {
-          "name": "个人助手",
-          "count": 1,
-          "category": "Other",
-          "color": "hsl(58, 46%, 61%)"
-        },
-        {
-          "name": "产品分析",
-          "count": 1,
-          "category": "Other",
-          "color": "hsl(332, 46%, 61%)"
-        },
-        {
-          "name": "Prompt Engineering",
-          "count": 1,
-          "category": "Other",
-          "color": "hsl(151, 46%, 61%)"
-        },
-        {
-          "name": "LLM",
-          "count": 1,
-          "category": "Other",
-          "color": "hsl(229, 46%, 61%)"
-        },
-        {
-          "name": "生产力",
-          "count": 1,
-          "category": "Other",
-          "color": "hsl(195, 46%, 61%)"
-        },
-        {
-          "name": "沟通",
-          "count": 1,
-          "category": "Other",
-          "color": "hsl(347, 46%, 61%)"
+          "color": "hsl(290, 46%, 61%)"
         },
         {
           "name": "博客",
           "count": 1,
           "category": "Other",
           "color": "hsl(216, 46%, 61%)"
-        },
-        {
-          "name": "Next.js",
-          "count": 1,
-          "category": "Other",
-          "color": "hsl(36, 46%, 61%)"
         },
         {
           "name": "Vercel",
@@ -534,15 +474,27 @@
         },
         {
           "name": "Network",
-          "count": 1,
+          "count": 2,
           "category": "Other",
-          "color": "hsl(70, 46%, 61%)"
+          "color": "hsl(70, 47%, 62%)"
         },
         {
           "name": "Domain",
           "count": 1,
           "category": "Other",
           "color": "hsl(60, 46%, 61%)"
+        },
+        {
+          "name": "Chrome DevTools",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(140, 46%, 61%)"
+        },
+        {
+          "name": "前端调试",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(100, 46%, 61%)"
         },
         {
           "name": "web3",
@@ -647,6 +599,90 @@
           "color": "hsl(259, 46%, 61%)"
         },
         {
+          "name": "AI 工作流",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(162, 46%, 61%)"
+        },
+        {
+          "name": "工程实践",
+          "count": 2,
+          "category": "Other",
+          "color": "hsl(205, 47%, 62%)"
+        },
+        {
+          "name": "机器学习",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(208, 46%, 61%)"
+        },
+        {
+          "name": "HITL",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(185, 46%, 61%)"
+        },
+        {
+          "name": "RAG",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(248, 46%, 61%)"
+        },
+        {
+          "name": "内容审核",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(347, 46%, 61%)"
+        },
+        {
+          "name": "Agent",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(285, 46%, 61%)"
+        },
+        {
+          "name": "人工智能",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(246, 46%, 61%)"
+        },
+        {
+          "name": "个人助手",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(58, 46%, 61%)"
+        },
+        {
+          "name": "产品分析",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(332, 46%, 61%)"
+        },
+        {
+          "name": "Prompt Engineering",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(151, 46%, 61%)"
+        },
+        {
+          "name": "LLM",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(229, 46%, 61%)"
+        },
+        {
+          "name": "生产力",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(195, 46%, 61%)"
+        },
+        {
+          "name": "沟通",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(347, 46%, 61%)"
+        },
+        {
           "name": "写作练习",
           "count": 1,
           "category": "Other",
@@ -686,5 +722,5 @@
       "color": "hsl(184, 46%, 61%)"
     }
   },
-  "generatedAt": "2025-10-17T12:52:06.087Z"
+  "generatedAt": "2025-10-17T16:14:07.907Z"
 }

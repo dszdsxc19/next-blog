@@ -240,16 +240,6 @@
     ]
   },
   {
-    "date": "2025-01-17",
-    "count": 1,
-    "posts": [
-      {
-        "title": "有了TCP为什么还需要HTTP？再用RPC？这次彻底讲明白了",
-        "slug": "cs/backend/why-rpc-when-there-is-http"
-      }
-    ]
-  },
-  {
     "date": "2025-09-26",
     "count": 1,
     "posts": [
@@ -359,11 +349,33 @@
   },
   {
     "date": "2025-10-15",
-    "count": 1,
+    "count": 2,
     "posts": [
+      {
+        "title": "有了TCP为什么还需要HTTP？再用RPC？这次彻底讲明白了",
+        "slug": "cs/backend/why-rpc-when-there-is-http"
+      },
       {
         "title": "AI Agent：董事长的私人秘书",
         "slug": "cs/llm/llm-positive-personal-related-info-stream"
+      }
+    ]
+  },
+  {
+    "date": "2025-10-17",
+    "count": 3,
+    "posts": [
+      {
+        "title": "日志的系统观：从 Next.js 到 Spring Boot 的实践笔记",
+        "slug": "cs/other/a-good-log-system"
+      },
+      {
+        "title": "系统视角的观测：用 Next.js + Java + PostgreSQL 拆解一个 Web 应用",
+        "slug": "cs/other/analyst-a-website-from-system-hierarchy"
+      },
+      {
+        "title": "利用 Chrome DevTools Network Initiator 定位请求源头",
+        "slug": "cs/web/debug-chrome-web-initiator"
       }
     ]
   }
