@@ -1,8 +1,9 @@
-const { withContentlayer } = require('next-contentlayer2')
-
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-})
+import bundleAnalyzer from '@next/bundle-analyzer'
+import mdxMermaid from 'mdx-mermaid'
+import { Mermaid } from 'mdx-mermaid/lib/Mermaid'
+import type { NextConfig } from 'next'
+import { withContentlayer } from 'next-contentlayer2'
+import createMDX from '@next/mdx'
 
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
@@ -58,11 +59,30 @@ const output = process.env.EXPORT ? 'export' : undefined
 const basePath = process.env.BASE_PATH || undefined
 const unoptimized = process.env.UNOPTIMIZED ? true : undefined
 
-/**
- * @type {import('next/dist/next-server/server/config').NextConfig}
- **/
-module.exports = () => {
-  const plugins = [withContentlayer, withBundleAnalyzer]
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+})
+
+const withMDX = (() => {
+  try {
+    return createMDX({
+      // Add markdown plugins here, as desired
+      options: {
+        remarkPlugins: [[mdxMermaid, { output: 'svg' }]],
+        components: { mermaid: Mermaid, Mermaid },
+        rehypePlugins: [],
+      },
+    })
+  } catch {
+    return null
+  }
+})()
+
+const createConfig = (): NextConfig => {
+  const plugins = [withContentlayer, withBundleAnalyzer].filter(Boolean) as Array<
+    (config: NextConfig) => NextConfig
+  >
+
   return plugins.reduce((acc, next) => next(acc), {
     output,
     basePath,
@@ -103,8 +123,9 @@ module.exports = () => {
       // Fix for @floating-ui vendor chunks issue in Next.js 15
       config.optimization = config.optimization || {}
       config.optimization.splitChunks = config.optimization.splitChunks || {}
-      config.optimization.splitChunks.cacheGroups = config.optimization.splitChunks.cacheGroups || {}
-      
+      config.optimization.splitChunks.cacheGroups =
+        config.optimization.splitChunks.cacheGroups || {}
+
       // Force @floating-ui packages to be bundled together
       config.optimization.splitChunks.cacheGroups.floatingUI = {
         test: /[\\/]node_modules[\\/]@floating-ui[\\/]/,
@@ -117,3 +138,5 @@ module.exports = () => {
     },
   })
 }
+
+export default withMDX(createConfig)
