@@ -21,12 +21,8 @@
   },
   {
     "date": "2023-11-05",
-    "count": 2,
+    "count": 1,
     "posts": [
-      {
-        "title": "用 Husky + Prettier 把关提交质量",
-        "slug": "cs/frontend/frontend-tool"
-      },
       {
         "title": "搞懂 npm、npx 与 package.json",
         "slug": "cs/frontend/npm-npx-package-json"

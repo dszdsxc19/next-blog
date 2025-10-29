@@ -1,7 +1,7 @@
 [
   {
     "name": "Other",
-    "count": 153,
+    "count": 151,
     "children": [
       {
         "name": "weekly",
@@ -274,6 +274,36 @@
         "color": "hsl(18, 46%, 61%)"
       },
       {
+        "name": "前端基础",
+        "count": 1,
+        "category": "Other",
+        "color": "hsl(96, 46%, 61%)"
+      },
+      {
+        "name": "前端工程化",
+        "count": 3,
+        "category": "Other",
+        "color": "hsl(170, 48%, 63%)"
+      },
+      {
+        "name": "代码规范",
+        "count": 1,
+        "category": "Other",
+        "color": "hsl(173, 46%, 61%)"
+      },
+      {
+        "name": "包管理",
+        "count": 1,
+        "category": "Other",
+        "color": "hsl(194, 46%, 61%)"
+      },
+      {
+        "name": "监控与观测",
+        "count": 1,
+        "category": "Other",
+        "color": "hsl(7, 46%, 61%)"
+      },
+      {
         "name": "PostgreSQL",
         "count": 2,
         "category": "Other",
@@ -508,42 +538,6 @@
         "color": "hsl(339, 46%, 61%)"
       },
       {
-        "name": "前端基础",
-        "count": 1,
-        "category": "Other",
-        "color": "hsl(96, 46%, 61%)"
-      },
-      {
-        "name": "前端工程化",
-        "count": 4,
-        "category": "Other",
-        "color": "hsl(170, 49%, 64%)"
-      },
-      {
-        "name": "代码规范",
-        "count": 1,
-        "category": "Other",
-        "color": "hsl(173, 46%, 61%)"
-      },
-      {
-        "name": "Git Hooks",
-        "count": 1,
-        "category": "Other",
-        "color": "hsl(10, 46%, 61%)"
-      },
-      {
-        "name": "包管理",
-        "count": 1,
-        "category": "Other",
-        "color": "hsl(194, 46%, 61%)"
-      },
-      {
-        "name": "监控与观测",
-        "count": 1,
-        "category": "Other",
-        "color": "hsl(7, 46%, 61%)"
-      },
-      {
         "name": "Network",
         "count": 2,
         "category": "Other",
@@ -670,28 +664,22 @@
         "color": "hsl(259, 46%, 61%)"
       },
       {
-        "name": "写作练习",
-        "count": 1,
-        "category": "Other",
-        "color": "hsl(120, 46%, 61%)"
-      },
-      {
         "name": "调试日志",
         "count": 2,
         "category": "Other",
         "color": "hsl(100, 47%, 62%)"
       },
       {
-        "name": "心情",
-        "count": 1,
-        "category": "Other",
-        "color": "hsl(298, 46%, 61%)"
-      },
-      {
         "name": "阅读记忆",
         "count": 2,
         "category": "Other",
         "color": "hsl(148, 47%, 62%)"
+      },
+      {
+        "name": "写作练习",
+        "count": 1,
+        "category": "Other",
+        "color": "hsl(120, 46%, 61%)"
       },
       {
         "name": "AI 思考",
@@ -704,6 +692,12 @@
         "count": 2,
         "category": "Other",
         "color": "hsl(153, 47%, 62%)"
+      },
+      {
+        "name": "心情",
+        "count": 1,
+        "category": "Other",
+        "color": "hsl(298, 46%, 61%)"
       }
     ],
     "color": "hsl(184, 46%, 61%)"
@@ -713,16 +707,16 @@
     "count": 2,
     "children": [
       {
-        "name": "Java",
-        "count": 1,
-        "category": "Technology",
-        "color": "hsl(26, 46%, 61%)"
-      },
-      {
         "name": "Angular",
         "count": 1,
         "category": "Technology",
         "color": "hsl(246, 46%, 61%)"
+      },
+      {
+        "name": "Java",
+        "count": 1,
+        "category": "Technology",
+        "color": "hsl(26, 46%, 61%)"
       }
     ],
     "color": "#3b82f6"
