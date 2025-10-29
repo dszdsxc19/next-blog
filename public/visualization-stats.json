@@ -311,40 +311,88 @@
           "color": "hsl(3, 46%, 61%)"
         },
         {
-          "name": "前端基础",
+          "name": "AI 工作流",
           "count": 1,
           "category": "Other",
-          "color": "hsl(96, 46%, 61%)"
+          "color": "hsl(162, 46%, 61%)"
         },
         {
-          "name": "前端工程化",
-          "count": 4,
+          "name": "工程实践",
+          "count": 2,
           "category": "Other",
-          "color": "hsl(170, 49%, 64%)"
+          "color": "hsl(205, 47%, 62%)"
         },
         {
-          "name": "代码规范",
+          "name": "机器学习",
           "count": 1,
           "category": "Other",
-          "color": "hsl(173, 46%, 61%)"
+          "color": "hsl(208, 46%, 61%)"
         },
         {
-          "name": "Git Hooks",
+          "name": "HITL",
           "count": 1,
           "category": "Other",
-          "color": "hsl(10, 46%, 61%)"
+          "color": "hsl(185, 46%, 61%)"
         },
         {
-          "name": "包管理",
+          "name": "RAG",
           "count": 1,
           "category": "Other",
-          "color": "hsl(194, 46%, 61%)"
+          "color": "hsl(248, 46%, 61%)"
         },
         {
-          "name": "监控与观测",
+          "name": "内容审核",
           "count": 1,
           "category": "Other",
-          "color": "hsl(7, 46%, 61%)"
+          "color": "hsl(347, 46%, 61%)"
+        },
+        {
+          "name": "Agent",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(285, 46%, 61%)"
+        },
+        {
+          "name": "人工智能",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(246, 46%, 61%)"
+        },
+        {
+          "name": "个人助手",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(58, 46%, 61%)"
+        },
+        {
+          "name": "产品分析",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(332, 46%, 61%)"
+        },
+        {
+          "name": "Prompt Engineering",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(151, 46%, 61%)"
+        },
+        {
+          "name": "LLM",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(229, 46%, 61%)"
+        },
+        {
+          "name": "生产力",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(195, 46%, 61%)"
+        },
+        {
+          "name": "沟通",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(347, 46%, 61%)"
         },
         {
           "name": "日志",
@@ -473,6 +521,42 @@
           "color": "hsl(339, 46%, 61%)"
         },
         {
+          "name": "前端基础",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(96, 46%, 61%)"
+        },
+        {
+          "name": "前端工程化",
+          "count": 4,
+          "category": "Other",
+          "color": "hsl(170, 49%, 64%)"
+        },
+        {
+          "name": "代码规范",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(173, 46%, 61%)"
+        },
+        {
+          "name": "Git Hooks",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(10, 46%, 61%)"
+        },
+        {
+          "name": "包管理",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(194, 46%, 61%)"
+        },
+        {
+          "name": "监控与观测",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(7, 46%, 61%)"
+        },
+        {
           "name": "Network",
           "count": 2,
           "category": "Other",
@@ -599,106 +683,22 @@
           "color": "hsl(259, 46%, 61%)"
         },
         {
-          "name": "AI 工作流",
-          "count": 1,
-          "category": "Other",
-          "color": "hsl(162, 46%, 61%)"
-        },
-        {
-          "name": "工程实践",
-          "count": 2,
-          "category": "Other",
-          "color": "hsl(205, 47%, 62%)"
-        },
-        {
-          "name": "机器学习",
-          "count": 1,
-          "category": "Other",
-          "color": "hsl(208, 46%, 61%)"
-        },
-        {
-          "name": "HITL",
-          "count": 1,
-          "category": "Other",
-          "color": "hsl(185, 46%, 61%)"
-        },
-        {
-          "name": "RAG",
-          "count": 1,
-          "category": "Other",
-          "color": "hsl(248, 46%, 61%)"
-        },
-        {
-          "name": "内容审核",
-          "count": 1,
-          "category": "Other",
-          "color": "hsl(347, 46%, 61%)"
-        },
-        {
-          "name": "Agent",
-          "count": 1,
-          "category": "Other",
-          "color": "hsl(285, 46%, 61%)"
-        },
-        {
-          "name": "人工智能",
-          "count": 1,
-          "category": "Other",
-          "color": "hsl(246, 46%, 61%)"
-        },
-        {
-          "name": "个人助手",
-          "count": 1,
-          "category": "Other",
-          "color": "hsl(58, 46%, 61%)"
-        },
-        {
-          "name": "产品分析",
-          "count": 1,
-          "category": "Other",
-          "color": "hsl(332, 46%, 61%)"
-        },
-        {
-          "name": "Prompt Engineering",
-          "count": 1,
-          "category": "Other",
-          "color": "hsl(151, 46%, 61%)"
-        },
-        {
-          "name": "LLM",
-          "count": 1,
-          "category": "Other",
-          "color": "hsl(229, 46%, 61%)"
-        },
-        {
-          "name": "生产力",
-          "count": 1,
-          "category": "Other",
-          "color": "hsl(195, 46%, 61%)"
-        },
-        {
-          "name": "沟通",
-          "count": 1,
-          "category": "Other",
-          "color": "hsl(347, 46%, 61%)"
-        },
-        {
           "name": "写作练习",
           "count": 1,
           "category": "Other",
           "color": "hsl(120, 46%, 61%)"
         },
         {
-          "name": "心情",
-          "count": 1,
-          "category": "Other",
-          "color": "hsl(298, 46%, 61%)"
-        },
-        {
           "name": "调试日志",
           "count": 2,
           "category": "Other",
           "color": "hsl(100, 47%, 62%)"
+        },
+        {
+          "name": "心情",
+          "count": 1,
+          "category": "Other",
+          "color": "hsl(298, 46%, 61%)"
         },
         {
           "name": "阅读记忆",
@@ -722,5 +722,5 @@
       "color": "hsl(184, 46%, 61%)"
     }
   },
-  "generatedAt": "2025-10-17T16:14:07.907Z"
+  "generatedAt": "2025-10-29T00:51:30.153Z"
 }
