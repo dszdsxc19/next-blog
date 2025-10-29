@@ -13,6 +13,7 @@
   "dependencies": {
     "@headlessui/react": "2.2.0",
     "@next/bundle-analyzer": "15.2.4",
+    "@next/mdx": "^16.0.1",
     "@observablehq/plot": "^0.6.17",
     "@tailwindcss/forms": "^0.5.9",
     "@tailwindcss/postcss": "^4.0.5",
@@ -27,6 +28,7 @@
     "gray-matter": "^4.0.2",
     "hast-util-from-html-isomorphic": "^2.0.0",
     "image-size": "2.0.1",
+    "mdx-mermaid": "^2.0.3",
     "next": "15.2.4",
     "next-contentlayer2": "0.5.5",
     "next-themes": "^0.4.6",
