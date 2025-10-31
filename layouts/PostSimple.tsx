@@ -1,18 +1,11 @@
-'use client'
-
-import { ReactNode, useEffect, useState } from 'react'
+import { ReactNode } from 'react'
 import { formatDate } from 'pliny/utils/formatDate'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog } from 'contentlayer/generated'
-import ArchiveBadge from '@/components/ArchiveBadge'
 import Comments from '@/components/Comments'
 import Link from '@/components/Link'
 import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
-import { SkeletonTOC } from '@/components/TableOfContents'
-import { extractTOCFromDOM, shouldShowTOC } from '@/lib/utils/extractTOC'
-import { useTOCConfig } from '@/lib/hooks/useTOCConfig'
-import { TOCItem } from '@/types/toc'
 import siteMetadata from '@/data/siteMetadata'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 
@@ -24,19 +17,7 @@ interface LayoutProps {
 }
 
 export default function PostLayout({ content, next, prev, children }: LayoutProps) {
-  const { path, slug, date, title, isArchive, toc: postTOCConfig } = content
-  const [toc, setToc] = useState<TOCItem[]>([])
-
-  // Get TOC configuration
-  const { config: tocConfig, shouldShowTOC: tocEnabled } = useTOCConfig(postTOCConfig)
-
-  // Extract TOC from DOM after component mounts
-  useEffect(() => {
-    const extractedTOC = extractTOCFromDOM()
-    setToc(extractedTOC)
-  }, [children])
-
-  const showToc = tocEnabled && shouldShowTOC(toc, tocConfig.minHeadings)
+  const { path, slug, date, title } = content
 
   return (
     <SectionContainer>
@@ -56,34 +37,11 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
               <div>
                 <PageTitle>{title}</PageTitle>
               </div>
-              {isArchive ? (
-                <div className="mt-3 flex justify-center">
-                  <ArchiveBadge />
-                </div>
-              ) : null}
             </div>
           </header>
           <div className="grid-rows-[auto_1fr] divide-y divide-gray-200 pb-8 xl:divide-y-0 dark:divide-gray-700">
             <div className="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0 dark:divide-gray-700">
-              <div className="pt-10 pb-8">
-                <div className="relative xl:flex xl:items-start xl:gap-12">
-                  <div
-                    className="prose dark:prose-invert max-w-none flex-1"
-                    data-toc-scope="article"
-                  >
-                    {children}
-                  </div>
-                  {showToc && (
-                    <aside className="hidden xl:flex xl:w-64 xl:flex-none xl:justify-end">
-                      <SkeletonTOC
-                        toc={toc}
-                        minHeadings={tocConfig.minHeadings}
-                        maxDepth={tocConfig.maxDepth}
-                      />
-                    </aside>
-                  )}
-                </div>
-              </div>
+              <div className="prose dark:prose-invert max-w-none pt-10 pb-8">{children}</div>
             </div>
             {siteMetadata.comments && (
               <div className="pt-6 pb-6 text-center text-gray-700 dark:text-gray-300" id="comment">

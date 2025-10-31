@@ -1,9 +1,7 @@
-import { ReactNode, Suspense } from 'react'
+import { ReactNode } from 'react'
 import type { Authors } from 'contentlayer/generated'
 import SocialIcon from '@/components/social-icons'
 import Image from '@/components/Image'
-import { ActivityVisualizationsContainer } from '@/components/ActivityVisualizations/ActivityVisualizationsContainer'
-import { LoadingSpinner } from '@/components/ui/LoadingSpinner'
 
 interface Props {
   children: ReactNode
@@ -21,7 +19,7 @@ export default function AuthorLayout({ children, content }: Props) {
             About
           </h1>
         </div>
-        <div className="items-start space-y-2 xl:grid xl:grid-cols-3 xl:space-y-0 xl:gap-x-8">
+        <div className="items-start space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0">
           <div className="flex flex-col items-center space-x-2 pt-8">
             {avatar && (
               <Image
@@ -46,17 +44,6 @@ export default function AuthorLayout({ children, content }: Props) {
           <div className="prose dark:prose-invert max-w-none pt-8 pb-8 xl:col-span-2">
             {children}
           </div>
-        </div>
-
-        {/* Activity Visualizations Section */}
-        <div className="py-8">
-          <Suspense fallback={
-            <div className="flex justify-center py-12">
-              <LoadingSpinner size="lg" text="Loading activity visualizations..." />
-            </div>
-          }>
-            <ActivityVisualizationsContainer />
-          </Suspense>
         </div>
       </div>
     </>

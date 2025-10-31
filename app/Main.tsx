@@ -1,4 +1,3 @@
-import ArchiveBadge from '@/components/ArchiveBadge'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
@@ -22,7 +21,7 @@ export default function Home({ posts }) {
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {!posts.length && 'No posts found.'}
           {posts.slice(0, MAX_DISPLAY).map((post) => {
-            const { slug, date, title, summary, tags, isArchive } = post
+            const { slug, date, title, summary, tags } = post
             return (
               <li key={slug} className="py-12">
                 <article>
@@ -43,9 +42,6 @@ export default function Home({ posts }) {
                             >
                               {title}
                             </Link>
-                            {isArchive ? (
-                              <ArchiveBadge className="ml-3 align-middle" size="compact" />
-                            ) : null}
                           </h2>
                           <div className="flex flex-wrap">
                             {tags.map((tag) => (

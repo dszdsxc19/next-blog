@@ -1,20 +1,12 @@
-'use client'
-
-import { ReactNode, useEffect, useState } from 'react'
+import { ReactNode } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog, Authors } from 'contentlayer/generated'
-import ArchiveBadge from '@/components/ArchiveBadge'
 import Comments from '@/components/Comments'
 import Link from '@/components/Link'
 import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
 import Image from '@/components/Image'
 import Tag from '@/components/Tag'
-import { SkeletonTOC } from '@/components/TableOfContents'
-import { extractTOCFromDOM, shouldShowTOC } from '@/lib/utils/extractTOC'
-import { useTOCConfig } from '@/lib/hooks/useTOCConfig'
-import { useScrollTOCVisibility } from '@/lib/hooks/useScrollTOCVisibility'
-import { TOCItem } from '@/types/toc'
 import siteMetadata from '@/data/siteMetadata'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 
@@ -38,23 +30,8 @@ interface LayoutProps {
 }
 
 export default function PostLayout({ content, authorDetails, next, prev, children }: LayoutProps) {
-  const { filePath, path, slug, date, title, tags, isArchive, toc: postTOCConfig } = content
+  const { filePath, path, slug, date, title, tags } = content
   const basePath = path.split('/')[0]
-  const [toc, setToc] = useState<TOCItem[]>([])
-
-  // Get TOC configuration
-  const { config: tocConfig, shouldShowTOC: tocEnabled } = useTOCConfig(postTOCConfig)
-
-  // Extract TOC from DOM after component mounts
-  useEffect(() => {
-    const extractedTOC = extractTOCFromDOM()
-    setToc(extractedTOC)
-  }, [children])
-
-  const showToc = tocEnabled && shouldShowTOC(toc, tocConfig.minHeadings)
-
-  // Initialize scroll-based TOC visibility hook
-  const { backLinkRef, tocState } = useScrollTOCVisibility(showToc)
 
   return (
     <SectionContainer>
@@ -76,85 +53,55 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
               <div>
                 <PageTitle>{title}</PageTitle>
               </div>
-              {isArchive ? (
-                <div className="mt-3 flex justify-center">
-                  <ArchiveBadge />
-                </div>
-              ) : null}
             </div>
           </header>
           <div className="grid-rows-[auto_1fr] divide-y divide-gray-200 pb-8 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0 dark:divide-gray-700">
-            <div className="xl:border-b xl:border-gray-200 xl:pt-11 xl:dark:border-gray-700">
-              {/* Authors */}
-              <dl className="pt-6 pb-10">
-                <dt className="sr-only">Authors</dt>
-                <dd>
-                  <ul className="flex flex-wrap justify-center gap-4 sm:space-x-12 xl:block xl:space-y-8 xl:space-x-0">
-                    {authorDetails.map((author) => {
-                      const authorHref = author.slug ? `/about/${author.slug}` : '/about'
-
-                      return (
-                        <li className="flex items-center space-x-2" key={author.name}>
-                          {author.avatar && (
-                            <Link href={authorHref} aria-label={`View profile: ${author.name}`}>
-                              <Image
-                                src={author.avatar}
-                                width={38}
-                                height={38}
-                                alt="avatar"
-                                className="h-10 w-10 rounded-full"
-                              />
+            <dl className="pt-6 pb-10 xl:border-b xl:border-gray-200 xl:pt-11 xl:dark:border-gray-700">
+              <dt className="sr-only">Authors</dt>
+              <dd>
+                <ul className="flex flex-wrap justify-center gap-4 sm:space-x-12 xl:block xl:space-y-8 xl:space-x-0">
+                  {authorDetails.map((author) => (
+                    <li className="flex items-center space-x-2" key={author.name}>
+                      {author.avatar && (
+                        <Image
+                          src={author.avatar}
+                          width={38}
+                          height={38}
+                          alt="avatar"
+                          className="h-10 w-10 rounded-full"
+                        />
+                      )}
+                      <dl className="text-sm leading-5 font-medium whitespace-nowrap">
+                        <dt className="sr-only">Name</dt>
+                        <dd className="text-gray-900 dark:text-gray-100">{author.name}</dd>
+                        <dt className="sr-only">Twitter</dt>
+                        <dd>
+                          {author.twitter && (
+                            <Link
+                              href={author.twitter}
+                              className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                            >
+                              {author.twitter
+                                .replace('https://twitter.com/', '@')
+                                .replace('https://x.com/', '@')}
                             </Link>
                           )}
-                          <dl className="text-sm leading-5 font-medium whitespace-nowrap">
-                            <dt className="sr-only">Name</dt>
-                            <dd>
-                              <Link
-                                href={authorHref}
-                                className="hover:text-primary-600 dark:hover:text-primary-400 text-gray-900 dark:text-gray-100"
-                              >
-                                {author.name}
-                              </Link>
-                            </dd>
-                            <dt className="sr-only">Twitter</dt>
-                            <dd>
-                              {author.twitter && (
-                                <Link
-                                  href={author.twitter}
-                                  className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                                >
-                                  {author.twitter
-                                    .replace('https://twitter.com/', '@')
-                                    .replace('https://x.com/', '@')}
-                                </Link>
-                              )}
-                            </dd>
-                          </dl>
-                        </li>
-                      )
-                    })}
-                  </ul>
-                </dd>
-              </dl>
-            </div>
+                        </dd>
+                      </dl>
+                    </li>
+                  ))}
+                </ul>
+              </dd>
+            </dl>
             <div className="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0 dark:divide-gray-700">
-              <div className="pt-10 pb-8">
-                <div className="relative xl:flex xl:items-start xl:gap-12">
-                  <div
-                    className="prose dark:prose-invert max-w-none flex-1"
-                    data-toc-scope="article"
-                  >
-                    {children}
-                  </div>
-                </div>
-              </div>
-              {/* <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
+              <div className="prose dark:prose-invert max-w-none pt-10 pb-8">{children}</div>
+              <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
                 <Link href={discussUrl(path)} rel="nofollow">
                   Discuss on Twitter
                 </Link>
                 {` • `}
                 <Link href={editUrl(filePath)}>View on GitHub</Link>
-              </div> */}
+              </div>
               {siteMetadata.comments && (
                 <div
                   className="pt-6 pb-6 text-center text-gray-700 dark:text-gray-300"
@@ -203,12 +150,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                   </div>
                 )}
               </div>
-              <div
-                ref={backLinkRef}
-                className="pt-4 xl:pt-8"
-                role="navigation"
-                aria-label="Blog navigation"
-              >
+              <div className="pt-4 xl:pt-8">
                 <Link
                   href={`/${basePath}`}
                   className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
@@ -217,24 +159,6 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                   &larr; Back to the blog
                 </Link>
               </div>
-              {showToc && (
-                <div className="pt-8 xl:min-h-screen">
-                  <div className="sticky top-5">
-                    <div
-                      className={`max-h-[calc(100vh-4rem)] transition-all duration-300 ease-in-out ${tocState.shouldShowTOC ? 'translate-y-0 opacity-100' : 'pointer-events-none -translate-y-4 opacity-0'}`}
-                      role="navigation"
-                      aria-label="Table of contents"
-                      aria-hidden={!tocState.shouldShowTOC}
-                    >
-                      <SkeletonTOC
-                        toc={toc}
-                        minHeadings={tocConfig.minHeadings}
-                        maxDepth={tocConfig.maxDepth}
-                      />
-                    </div>
-                  </div>
-                </div>
-              )}
             </footer>
           </div>
         </div>

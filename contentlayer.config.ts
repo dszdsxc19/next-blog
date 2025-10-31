@@ -23,12 +23,12 @@ import rehypeCitation from 'rehype-citation'
 import rehypePrismPlus from 'rehype-prism-plus'
 import rehypePresetMinify from 'rehype-preset-minify'
 import siteMetadata from './data/siteMetadata'
-import { allCoreContent, MDXDocumentDate, sortPosts } from 'pliny/utils/contentlayer.js'
-import { filterRegularPosts, filterRegularBlogPosts, isCategoryIndexPost } from './lib/blog'
-import { generateVisualizationData } from './lib/visualizations/buildTimeGeneration'
+import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer.js'
 import prettier from 'prettier'
 
 const root = process.cwd()
+const isProduction = process.env.NODE_ENV === 'production'
+
 // heroicon mini link
 const icon = fromHtmlIsomorphic(
   `
@@ -57,10 +57,6 @@ const computedFields: ComputedFields = {
     resolve: (doc) => doc._raw.sourceFilePath,
   },
   toc: { type: 'json', resolve: (doc) => extractTocHeadings(doc.body.raw) },
-  isArchive: {
-    type: 'boolean',
-    resolve: (doc) => doc.archive === true || doc._raw.flattenedPath.startsWith('blog/archive/'),
-  },
 }
 
 /**
@@ -69,10 +65,7 @@ const computedFields: ComputedFields = {
 async function createTagCount(allBlogs) {
   const tagCount: Record<string, number> = {}
   allBlogs.forEach((file) => {
-    if (isCategoryIndexPost(file)) {
-      return
-    }
-    if (file.tags && file.draft !== true) {
+    if (file.tags && (!isProduction || file.draft !== true)) {
       file.tags.forEach((tag) => {
         const formattedTag = slug(tag)
         if (formattedTag in tagCount) {
@@ -94,7 +87,7 @@ function createSearchIndex(allBlogs) {
   ) {
     writeFileSync(
       `public/${path.basename(siteMetadata.search.kbarConfig.searchDocumentsPath)}`,
-      JSON.stringify(allCoreContent(sortPosts(filterRegularBlogPosts(allBlogs))))
+      JSON.stringify(allCoreContent(sortPosts(allBlogs)))
     )
     console.log('Local search index generated...')
   }
@@ -108,20 +101,14 @@ export const Blog = defineDocumentType(() => ({
     title: { type: 'string', required: true },
     date: { type: 'date', required: true },
     tags: { type: 'list', of: { type: 'string' }, default: [] },
-    category: { type: 'boolean' },
     lastmod: { type: 'date' },
     draft: { type: 'boolean' },
-    archive: { type: 'boolean' },
     summary: { type: 'string' },
     images: { type: 'json' },
     authors: { type: 'list', of: { type: 'string' } },
     layout: { type: 'string' },
     bibliography: { type: 'string' },
     canonicalUrl: { type: 'string' },
-    toc: {
-      type: 'json',
-      description: 'Table of contents configuration. Can be boolean or object with settings.',
-    },
   },
   computedFields: {
     ...computedFields,
@@ -196,12 +183,5 @@ export default makeSource({
     const { allBlogs } = await importData()
     createTagCount(allBlogs)
     createSearchIndex(allBlogs)
-
-    // Generate visualization data
-    try {
-      await generateVisualizationData(allBlogs)
-    } catch (error) {
-      console.warn('Failed to generate visualization data:', error)
-    }
   },
 })

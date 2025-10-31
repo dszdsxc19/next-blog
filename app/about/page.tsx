@@ -1,19 +1,14 @@
-import { notFound } from 'next/navigation'
+import { Authors, allAuthors } from 'contentlayer/generated'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
 import AuthorLayout from '@/layouts/AuthorLayout'
+import { coreContent } from 'pliny/utils/contentlayer'
 import { genPageMetadata } from 'app/seo'
-import { resolveAuthor } from '@/lib/authors'
 
 export const metadata = genPageMetadata({ title: 'About' })
 
 export default function Page() {
-  const resolved = resolveAuthor('default')
-
-  if (!resolved) {
-    notFound()
-  }
-
-  const { author, mainContent } = resolved
+  const author = allAuthors.find((p) => p.slug === 'default') as Authors
+  const mainContent = coreContent(author)
 
   return (
     <>
