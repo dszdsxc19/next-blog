@@ -6,30 +6,6 @@ tags: ["Obsidian", "MCP", "知识管理", "Apple Notes", "数字生活"]
 
 > “工具的意义，不在于它多么智能，而在于它能否帮你更清晰地认识自己。”
 
-```mermaid
-flowchart LR
-    A[Apple Notes (临时笔记输入)] -->|定时任务／MCP Agent| B[同步到 Obsidian 知识库]
-    B --> C{两条输入路径}
-    C --> D[浏览器 Web Clipper / Folo 插件\n网页文章导入 Obsidian]
-    C --> E[Apple Notes → MCP 同步内容\n导入 Obsidian]
-    D --> B
-    E --> B
-    B --> F[整理／结构化（文件夹、标签、连接）]
-    F --> G[输出：博客（MDX/Markdown）]
-    G --> H[博客发布平台／渠道]
-    F --> I[版本控制／Git 插件]
-    I --> B
-    style A fill:#e3f6ff,stroke:#1b9bd7,stroke-width:2px
-    style B fill:#d9ffdd,stroke:#2f8f2f,stroke-width:2px
-    style C fill:#fffbe6,stroke:#d9a61e,stroke-width:2px
-    style D fill:#ffe3e3,stroke:#d85d5d,stroke-width:2px
-    style E fill:#ffe3e3,stroke:#d85d5d,stroke-width:2px
-    style F fill:#f3f3f3,stroke:#999,stroke-width:2px
-    style G fill:#f0e6ff,stroke:#6d4eb0,stroke-width:2px
-    style H fill:#fff,stroke:#555,stroke-width:1px
-    style I fill:#e6f4ff,stroke:#1a5fac,stroke-width:2px
-
-
 ## 一、从碎片到体系
 
 过去几年，我积累了大量的笔记：工作中的代码片段、读书摘录、旅行计划、灵感想法……  
